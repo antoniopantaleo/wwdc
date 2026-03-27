@@ -7,7 +7,7 @@ import (
 	"github.com/antoniopantaleo/wwdc/internal/domain"
 )
 
-func TestJSONExportHappyPath(t *testing.T) {
+func TestJSONExportHappyPathOneEventOneVideo(t *testing.T) {
 	var buf bytes.Buffer
 	sut := NewJSONExporter(&buf)
 	events := []domain.WWDCEvent{
@@ -43,6 +43,23 @@ func TestJSONExportHappyPath(t *testing.T) {
 			]
 		}
 	]
+}
+`
+	if buf.String() != expectedJSON {
+		t.Fatalf("expected JSON to be %s, got %s", expectedJSON, buf.String())
+	}
+}
+
+func TestJSONExportNoEvents(t *testing.T) {
+	var buf bytes.Buffer
+	sut := NewJSONExporter(&buf)
+	events := []domain.WWDCEvent{}
+	err := sut.Export(events)
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
+	expectedJSON := `{
+	"events": []
 }
 `
 	if buf.String() != expectedJSON {
