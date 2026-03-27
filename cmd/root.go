@@ -16,6 +16,9 @@ func NewRootCommand() (*cobra.Command, error) {
 	cmd := &cobra.Command{
 		Use: "wwdc",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if format != "json" {
+				return fmt.Errorf("unsupported format: %s", format)
+			}
 			scraper := &scraper.StubScraper{
 				Events: []domain.WWDCEvent{},
 			}
