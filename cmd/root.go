@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"bytes"
 	"fmt"
+	"os"
 
 	"github.com/antoniopantaleo/wwdc/internal/adapters/exporter"
 	"github.com/antoniopantaleo/wwdc/internal/adapters/scraper"
@@ -19,14 +19,14 @@ func NewRootCommand() (*cobra.Command, error) {
 			scraper := &scraper.StubScraper{
 				Events: []domain.WWDCEvent{},
 			}
-			var buf bytes.Buffer
-			exporter := exporter.NewJSONExporter(&buf)
+			out := os.Stdout
+			exporter := exporter.NewJSONExporter(out)
 			usecase := usecases.NewScrapeAndExportUseCase(scraper, exporter)
 			err := usecase.Execute()
 			if err != nil {
 				return err
 			}
-			fmt.Println(buf.String())
+			fmt.Fprintln(out)
 			return nil
 		},
 	}
