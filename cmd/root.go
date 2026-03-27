@@ -11,11 +11,14 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewRootCommand() (*cobra.Command, error) {
+func NewRootCommand() *cobra.Command {
 	var format string
 	cmd := &cobra.Command{
 		Use: "wwdc",
 		RunE: func(cmd *cobra.Command, args []string) error {
+			if format == "" {
+				return fmt.Errorf("--format is required")
+			}
 			if format != "json" {
 				return fmt.Errorf("unsupported format: %s", format)
 			}
@@ -35,6 +38,5 @@ func NewRootCommand() (*cobra.Command, error) {
 	}
 
 	cmd.Flags().StringVarP(&format, "format", "f", "", "Export format (only json is supported)")
-	err := cmd.MarkFlagRequired("format")
-	return cmd, err
+	return cmd
 }
