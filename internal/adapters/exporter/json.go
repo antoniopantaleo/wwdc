@@ -41,7 +41,7 @@ func (e *JSONExporter) Export(events []domain.WWDCEvent) error {
 		Events: jsonEvents,
 	}
 	encoder := json.NewEncoder(e.writer)
-	encoder.SetIndent("", "\t")
+	encoder.SetIndent("", "  ")
 	if err := encoder.Encode(exportData); err != nil {
 		return err
 	}

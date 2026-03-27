@@ -29,20 +29,20 @@ func TestJSONExportHappyPathOneEventOneVideo(t *testing.T) {
 		t.Fatalf("expected no error, got %v", err)
 	}
 	expectedJSON := `{
-	"events": [
-		{
-			"title": "WWDC26",
-			"year": 2026,
-			"coverUrl": "https://example.com/wwdc26.jpg",
-			"videos": [
-				{
-					"title": "Session 1",
-					"videoUrl": "https://example.com/session1.mp4",
-					"content": "This is the content of session 1."
-				}
-			]
-		}
-	]
+  "events": [
+    {
+      "title": "WWDC26",
+      "year": 2026,
+      "coverUrl": "https://example.com/wwdc26.jpg",
+      "videos": [
+        {
+          "title": "Session 1",
+          "videoUrl": "https://example.com/session1.mp4",
+          "content": "This is the content of session 1."
+        }
+      ]
+    }
+  ]
 }
 `
 	if buf.String() != expectedJSON {
@@ -59,7 +59,7 @@ func TestJSONExportNoEvents(t *testing.T) {
 		t.Fatalf("expected no error, got %v", err)
 	}
 	expectedJSON := `{
-	"events": []
+  "events": []
 }
 `
 	if buf.String() != expectedJSON {
