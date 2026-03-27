@@ -80,6 +80,9 @@ func TestScrapeScraperError(t *testing.T) {
 	if err == nil {
 		t.Fatal("expected an error, got nil")
 	}
+	if !errors.Is(err, errScrape) {
+		t.Fatalf("expected error to be %v, got %v", errScrape, err)
+	}
 	if exportFunctionCalled {
 		t.Fatal("expected export function not to be called, but it was")
 	}
@@ -116,6 +119,9 @@ func TestScrapeExportError(t *testing.T) {
 	err := sut.Execute()
 	if err == nil {
 		t.Fatal("expected an error, got nil")
+	}
+	if !errors.Is(err, errExport) {
+		t.Fatalf("expected error to be %v, got %v", errExport, err)
 	}
 }
 
