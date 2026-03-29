@@ -364,3 +364,37 @@ func TestMarkdownExportMakeDirError(t *testing.T) {
 		t.Fatalf("expected error to be %v, got %v", errMakeDir, err)
 	}
 }
+
+func TestMarkdownExportWriteFileError(t *testing.T) {
+	errWriteFile := errors.New("some error writing file")
+	fs := mockFileSystem{
+		makeDirFunc: func(path string) error {
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			return errWriteFile
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  2024,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{
+				{
+					Title:    "Session 1",
+					VideoURL: "https://example.com/session1.mp4",
+					Content:  "This is the content of session 1.",
+				},
+			},
+		},
+	}
+	sut := NewMarkdownExporter(&fs)
+	err := sut.Export(events)
+	if err == nil {
+		t.Fatal("expected an error, got nil")
+	}
+	if !errors.Is(err, errWriteFile) {
+		t.Fatalf("expected error to be %v, got %v", errWriteFile, err)
+	}
+}
