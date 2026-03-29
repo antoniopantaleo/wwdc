@@ -19,7 +19,7 @@ func (m *mockFileSystem) WriteFile(path string, data []byte) error {
 	return m.writeFileFunc(path, data)
 }
 
-func TestMarkdownExportHappyPath(t *testing.T) {
+func TestMarkdownExportHappyPathOneEventOneVideo(t *testing.T) {
 	var (
 		writtenDirectory string
 		writtenFilePath  string
@@ -65,5 +65,68 @@ func TestMarkdownExportHappyPath(t *testing.T) {
 
 	if string(writtenData) != string(expectedData) {
 		t.Fatalf("expected data to be %s, got %s", expectedData, writtenData)
+	}
+}
+
+func TestMarkdownExportHappyPathOneEventMultipleVideos(t *testing.T) {
+	var (
+		writtenDirectory string
+		writtenFilePaths  []string
+		writtenData      [][]byte
+	)
+	fs := mockFileSystem{
+		makeDirFunc: func(path string) error {
+			writtenDirectory = path
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			writtenFilePaths = append(writtenFilePaths, path)
+			writtenData = append(writtenData, data)
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title:    "WWDC25",
+			Year:     2025,
+			CoverURL: "https://example.com/wwdc25.jpg",
+			Videos: []domain.WWDCVideo{
+				{
+					Title:    "Session 1",
+					VideoURL: "https://example.com/session1.mp4",
+					Content:  "This is the content of session 1.",
+				},
+				{
+					Title: "Session 2",
+					VideoURL: "https://example.com/session2.mp4",
+					Content:  "This is the content of session 2.",
+				},
+			},
+		},
+	}
+	sut := NewMarkdownExporter(&fs)
+	err := sut.Export(events)
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
+	if writtenDirectory != "WWDC25" {
+		t.Fatalf("expected directory to be %s, got %s", "WWDC25", writtenDirectory)
+	}
+	if writtenFilePaths[0] != "WWDC25/Session 1.md" {
+		t.Fatalf("expected file path to be %s, got %s", "WWDC25/Session 1.md", writtenFilePaths[0])
+	}
+	expectedData := []byte("# Session 1\n\n[Video](https://example.com/session1.mp4)\n\nThis is the content of session 1.")
+
+	if string(writtenData[0]) != string(expectedData) {
+		t.Fatalf("expected data to be %s, got %s", expectedData, writtenData[0])
+	}
+
+	if writtenFilePaths[1] != "WWDC25/Session 2.md" {
+		t.Fatalf("expected file path to be %s, got %s", "WWDC25/Session 2.md", writtenFilePaths[1])
+	}
+	expectedData2 := []byte("# Session 2\n\n[Video](https://example.com/session2.mp4)\n\nThis is the content of session 2.")
+
+	if string(writtenData[1]) != string(expectedData2) {
+		t.Fatalf("expected data to be %s, got %s", expectedData2, writtenData[1])
 	}
 }
