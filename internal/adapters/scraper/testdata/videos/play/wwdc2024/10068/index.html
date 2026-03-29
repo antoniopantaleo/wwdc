@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+	<meta charset="utf-8" />
+<meta name="Author" content="Apple Inc." />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.ico" />
+<link rel="mask-icon" href="/apple-logo.svg" color="#333333">
+
+<link rel="stylesheet" href="/assets/styles/global.dist.css?51172657083" type="text/css" />
+<link rel="stylesheet" href="/assets/styles/dark-mode.css?54232608030" type="text/css" media="(prefers-color-scheme: dark)" data-color-scheme="dark" />
+<link rel="stylesheet" href="/assets/styles/localization.css?54232608030" type="text/css" />
+
+<script src="/assets/scripts/lib/jquery/jquery-3.6.0.min.js?45232608030"></script>
+<script src="/assets/scripts/settings.js?45232608030"></script>
+<script src="/assets/scripts/language-locales.js?45232608030"></script>
+<script src="/assets/scripts/DeveloperBreadcrumbs.js?45232608030"></script>
+<script src="/assets/metrics/scripts/analytics-module.js?45232608030"></script>
+
+<script async src="/assets/scripts/retinate.js?45232608030"></script>
+<script src="/assets/scripts/global-logout.js?45232608030"></script>
+
+<script async crossorigin src="https://sfss.cdn-apple.com/2.0.0-beta.2/sf-symbol.js?22182641088"></script>
+<link rel="stylesheet" href="https://sf-saas.cdn-apple.com/2.4.0-beta.0/animations/all.css" type="text/css" />
+
+
+
+
+
+	<link rel="stylesheet" href="https://www.apple.com/wss/fonts?families=SF+Pro,v3|SF+Pro+Icons,v3">
+<link rel="stylesheet" href="https://www.apple.com/wss/fonts?family=SF+Mono&v=2" type="text/css" />
+<link rel="stylesheet" href="https://www.apple.com/wss/fonts?family=Apple+Icons&v=1" type="text/css" />
+
+	<title>Bring your Live Activity to Apple Watch - WWDC24 - Videos - Apple Developer</title>
+	<meta name="omni_page" content="Bring your Live Activity to Apple Watch - WWDC24 - Videos" />
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link type="text/css" rel="stylesheet" href="/videos/styles/videos.css?3">
+	<link type="text/css" rel="stylesheet" href="/videos/styles/video-overlay.css?3">
+	<meta name="description" content="Bring Live Activities into the Smart Stack on Apple Watch with iOS 18 and watchOS 11. We'll cover how Live Activities are presented on...">
+
+	<meta property="og:url" content="https://developer.apple.com/videos/play/wwdc2024/10068/" />
+	<meta property="og:title" content="Bring your Live Activity to Apple Watch - WWDC24 - Videos - Apple Developer" />
+	<meta property="og:description" content="Bring Live Activities into the Smart Stack on Apple Watch with iOS 18 and watchOS 11. We'll cover how Live Activities are presented on..." />
+	<meta property="og:site_name" content="Apple Developer" />
+	<meta property="og:type" content="website" />
+	<meta property="og:video" content="https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/cmaf.m3u8" /> 
+	<meta property="og:video_secure_url" content="https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/cmaf.m3u8" /> 
+	<meta property="og:video:type" content="vnd.apple.mpegURL" /> 
+	<meta property="og:video:width" content="1280" />
+	<meta property="og:video:height" content="720" />
+		<meta property="og:image" content="https://devimages-cdn.apple.com/wwdc-services/images/C03E6E6D-A32A-41D0-9E50-C3C6059820AA/9161/9161_wide_250x141_2x.jpg" />
+		<meta property="og:locale" content="en_US" />
+	<meta itemprop="datePublished" content="2024-06-10">
+	<meta itemprop="uploadDate" content="2024-06-10">	
+
+	<link rel="alternate" href="https://developer.apple.com/videos/play/wwdc2024/10068/" hreflang="en">
+	<link rel="alternate" href="https://developer.apple.com/kr/videos/play/wwdc2024/10068/" hreflang="ko-KR">
+	<link rel="alternate" href="https://developer.apple.com/cn/videos/play/wwdc2024/10068/" hreflang="zh-CN">
+    <link rel="alternate" href="https://developer.apple.com/jp/videos/play/wwdc2024/10068/" hreflang="ja-JP">
+	<link rel="alternate" href="https://developer.apple.com/la/videos/play/wwdc2024/10068/" hreflang="es-lamr">
+	<link rel="alternate" href="https://developer.apple.com/fr/videos/play/wwdc2024/10068/" hreflang="fr-FR">
+	<link rel="alternate" href="https://developer.apple.com/br/videos/play/wwdc2024/10068/" hreflang="pt-BR">		
+    <link rel="canonical" href="https://developer.apple.com/videos/play/wwdc2024/10068/" />
+
+</head>
+<body class="view-play " >
+	
+	<script>
+	// Execute immediately to avoid UI flash
+	(function () {
+		// Prevent React dev mode from running this multiple times
+		if (window.__didRunColorThemeScript) {
+			return;
+		}
+		window.__didRunColorThemeScript = true;
+
+		const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+		const body = document.body;
+
+		// If theme-dark or theme-light is already applied, do nothing and lock it
+		if (body.classList.contains("theme-dark") || body.classList.contains("theme-light")) {
+
+			// Set the data-color-scheme attribute based on the existing theme
+			body.setAttribute('data-color-scheme', body.classList.contains("theme-dark") ? "dark" : "light");
+
+			// Prevent future modifications
+			window.__disableColorScheme = true;
+
+			// Hide the color picker immediately
+			const style = document.createElement('style');
+			style.textContent = '.color-scheme-toggle { display: none !important; }';
+			document.head.appendChild(style);
+
+			return;
+		}
+
+		// Otherwise, set theme normally based on user settings or system preference
+		if (window.Settings && window.Settings.preferredColorScheme) {
+			const colorTheme = (window.Settings.preferredColorScheme === 'auto') && !prefersDark ? 'light'
+				: (window.Settings.preferredColorScheme === 'light') ? 'light' : 'dark';
+			body.setAttribute('data-color-scheme', colorTheme);
+			colorTheme === "dark" ? body.classList.add("theme-dark") : body.classList.add("theme-light");
+		} else {
+			const colorTheme = prefersDark ? 'dark' : 'light';
+			body.setAttribute('data-color-scheme', colorTheme);
+			prefersDark ? body.classList.add("theme-dark") : body.classList.add("theme-light");
+		}
+	})();
+</script>
+
+
+<link rel="stylesheet" href="/assets/styles/suggest-lang.css?54232608030" type="text/css" />
+<div id="suggest-lang" class="ribbon hide" lang="en">
+	<div class="ribbon-content-wrapper">
+		<div class="ribbon-content row">
+			<div class="column large-12 large-centered">
+				<p><a href="#" id="suggest-link" class="ribbon-link more">View in English</a></p>
+				<button id="suggest-closer" class="icon icon-after icon-reset" aria-label="Dismiss language suggestion" tabindex="0"></button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/assets/scripts/suggest-lang.js?03162626057"></script>
+<link rel="stylesheet" href="/assets/styles/globalnav.css?48212635068" type="text/css" />
+<nav id="globalnav" lang="en-US" dir="ltr" aria-label="Global" class="globalnav js" style="--r-globalnav-text-zoom-scale: 1;">
+	<div class="globalnav-content">
+		<div class="globalnav-item globalnav-menuback"><button aria-label="Main menu" class="globalnav-menuback-button"><span class="globalnav-chevron-icon"><svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+						<path d="m1.5618 24.0621 6.5581-6.4238c.2368-.2319.2407-.6118.0088-.8486-.2324-.2373-.6123-.2407-.8486-.0088l-7 6.8569c-.1157.1138-.1807.2695-.1802.4316.001.1621.0674.3174.1846.4297l7 6.7241c.1162.1118.2661.1675.4155.1675.1577 0 .3149-.062.4326-.1846.2295-.2388.2222-.6187-.0171-.8481z"></path>
+					</svg></span></button></div>
+		<ul id="globalnav-list" class="globalnav-list">
+			<li class="
+	globalnav-item
+	globalnav-item-apple
+	ac-gn-item
+	ac-gn-apple
+">
+				<a href="/" aria-label="Apple Developer" class="globalnav-link globalnav-link-apple ac-gn-link ac-gn-link-apple-developer" id="ac-gn-firstfocus-small">
+					<span class="ac-gn-link-text globalnav-link-text">Apple Developer</span>
+				</a>
+			</li>
+			<li class="globalnav-item globalnav-menu">
+				<div class="globalnav-flyout" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0;">
+					<div class="globalnav-menu-list" style="--r-globalnav-flyout-item-total: 7;">
+						<div class="
+    globalnav-item
+    globalnav-item-getting-started
+    globalnav-item-menu
+    globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 0;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/get-started/" data-topnav-flyout-trigger-compact="true" aria-label="Get Started" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-getting-started">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Get Started</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-getting-started" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-getting-started" aria-label="Get Started menu" data-topnav-flyout-trigger-regular="true">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-getting-started" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-getting-started" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 4;">
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="apple-getting-started-heading" style="--r-globalnav-flyout-item-number: 1;">Explore Get Started</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="apple-getting-started-heading">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/get-started/" class="globalnav-submenu-link">Overview</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/learn/" class="globalnav-submenu-link">Learn</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/programs/" class="globalnav-submenu-link">Apple Developer Program</a></li>
+											</ul>
+										</div>
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="apple-learn-heading" style="--r-globalnav-flyout-item-number: 1;">Stay Updated</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="apple-learn-heading">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/news/" class="globalnav-submenu-link">Latest News</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/hello/" class="globalnav-submenu-link">Hello Developer</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+  globalnav-item
+  globalnav-item-platforms
+  globalnav-item-menu
+  globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 1;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/platforms/" aria-label="Platforms" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-platforms">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Platforms</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-platforms" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-platforms" aria-label="Platforms menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-platforms" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-platforms" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 9;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="platforms-apple-heading" style="--r-globalnav-flyout-item-number: 1;">Explore Platforms</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="platforms-apple-heading">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/platforms/" class="globalnav-submenu-link">Apple Platforms</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/ios/" class="globalnav-submenu-link">iOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/ipados/" class="globalnav-submenu-link">iPadOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/macos/" class="globalnav-submenu-link">macOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 6;"><a href="/tvos/" class="globalnav-submenu-link">tvOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 7;"><a href="/visionos/" class="globalnav-submenu-link">visionOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 8;"><a href="/watchos/" class="globalnav-submenu-link">watchOS</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 9;"><a href="/app-store/" class="globalnav-submenu-link">App Store</a></li>
+											</ul>
+										</div>
+										<!-- Featured -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="platforms-learn-heading" style="--r-globalnav-flyout-item-number: 1;">Featured</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="platforms-learn-heading">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/design/" class="globalnav-submenu-link">Design</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/distribute/" class="globalnav-submenu-link">Distribution</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/games/" class="globalnav-submenu-link">Games</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/accessories/" class="globalnav-submenu-link">Accessories</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/safari/" class="globalnav-submenu-link">Web<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 7;"><a href="/apple-home/" class="globalnav-submenu-link">Home</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 8;"><a href="/carplay/" class="globalnav-submenu-link">CarPlay</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+  globalnav-item
+  globalnav-item-technologies
+  globalnav-item-menu
+  globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 2;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/technologies/" aria-label="Technologies" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-technologies">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Technologies</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-technologies" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-technologies" aria-label="Technologies menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-technologies" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-technologies" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 254ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 8;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="technologies-learn-heading" style="--r-globalnav-flyout-item-number: 1;">Explore Technologies</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="technologies-learn-heading">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/technologies/" class="globalnav-submenu-link">Overview</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/xcode/" class="globalnav-submenu-link">Xcode</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/swift/" class="globalnav-submenu-link">Swift</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/swiftui/" class="globalnav-submenu-link">SwiftUI</a></li>
+											</ul>
+										</div>
+										<!-- Featured -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="technologies-featured-heading" style="--r-globalnav-flyout-item-number: 1;">Featured</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="technologies-featured-heading">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/documentation/accessibility" class="globalnav-submenu-link">Accessibility<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/documentation/appintents" class="globalnav-submenu-link">App Intents<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/apple-intelligence/" class="globalnav-submenu-link">Apple Intelligence</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/games/" class="globalnav-submenu-link">Games</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/machine-learning/" class="globalnav-submenu-link">Machine Learning &amp; AI</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 7;"><a href="/security/" class="globalnav-submenu-link">Security</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 8;"><a href="/xcode-cloud/" class="globalnav-submenu-link">Xcode Cloud</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+  globalnav-item
+  globalnav-item-community
+  globalnav-item-menu
+  globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 3;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/community/" aria-label="Community" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-community">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Community</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-community" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-community" aria-label="Community menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-community" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-community" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 7;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="community-engage-heading" style="--r-globalnav-flyout-item-number: 1;">Explore Community</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="community-engage-heading">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/community/" class="globalnav-submenu-link">Overview</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/events/" class="globalnav-submenu-link">Meet with Apple events</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/community/events/" class="globalnav-submenu-link">Community-driven events</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/forums/" class="globalnav-submenu-link">Developer Forums<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 6;"><a href="https://opensource.apple.com" class="globalnav-submenu-link">Open Source<span class="loc-en-only"></span></a></li>
+											</ul>
+										</div>
+										<!-- Featured -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="community-contribute-heading" style="--r-globalnav-flyout-item-number: 1;">Featured</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="community-contribute-heading">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/wwdc/" class="globalnav-submenu-link">WWDC</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/swift-student-challenge/" class="globalnav-submenu-link">Swift Student Challenge</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/developer-stories/" class="globalnav-submenu-link">Developer Stories</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/app-store/app-store-awards/" class="globalnav-submenu-link">App Store Awards<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/design/awards/" class="globalnav-submenu-link">Apple Design Awards</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 7;"><a href="/events/developer-centers/" class="globalnav-submenu-link">Apple Developer Centers</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+							    globalnav-item
+							    globalnav-item-documentation
+							    globalnav-item-menu
+							    globalnav-item-submenu
+							" style="--r-globalnav-flyout-item-number: 4;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/documentation/" aria-label="Documentation" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-documentation">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Documentation<span class="loc-en-only"></span></span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-documentation" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-documentation" aria-label="Documentation menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-documentation" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-documentation" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 9;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="docs-explore" style="--r-globalnav-flyout-item-number: 1;">Explore Documentation</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="docs-explore">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/documentation/" class="globalnav-submenu-link">Documentation Library<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/documentation/TechnologyOverviews" class="globalnav-submenu-link">Technology Overviews<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/documentation/SampleCode" class="globalnav-submenu-link">Sample Code<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/design/human-interface-guidelines/" class="globalnav-submenu-link">Human Interface Guidelines</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 6;"><a href="/videos/" class="globalnav-submenu-link">Videos</a></li>
+											</ul>
+										</div>
+										<!-- Release Notes -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="docs-release-notes" style="--r-globalnav-flyout-item-number: 1;">Release Notes</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="docs-release-notes">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/documentation/Updates" class="globalnav-submenu-link">Featured Updates<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/documentation/ios-ipados-release-notes" class="globalnav-submenu-link">iOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/documentation/ios-ipados-release-notes" class="globalnav-submenu-link">iPadOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/documentation/macos-release-notes" class="globalnav-submenu-link">macOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/documentation/watchos-release-notes" class="globalnav-submenu-link">watchOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 7;"><a href="/documentation/visionos-release-notes/" class="globalnav-submenu-link">visionOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 8;"><a href="/documentation/tvos-release-notes" class="globalnav-submenu-link">tvOS<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 9;"><a href="/documentation/Updates/xcode" class="globalnav-submenu-link">Xcode<span class="loc-en-only"></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+  globalnav-item
+  globalnav-item-downloads
+  globalnav-item-menu
+  globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 5;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/download/" aria-label="Downloads" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-downloads">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Downloads</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-downloads" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-downloads" aria-label="Downloads menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-downloads" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-downloads" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 6;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="downloads-explore-heading" style="--r-globalnav-flyout-item-number: 1;">Explore Downloads</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="downloads-explore-heading">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/download/" class="globalnav-submenu-link">All Downloads</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/download/os/" class="globalnav-submenu-link">Operating Systems<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/download/applications/" class="globalnav-submenu-link">Applications<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/design/resources/" class="globalnav-submenu-link">Design Resources</a></li>
+											</ul>
+										</div>
+										<!-- Featured -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="downloads-featured-heading" style="--r-globalnav-flyout-item-number: 1;">Featured</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="downloads-featured-heading">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/xcode/" class="globalnav-submenu-link">Xcode</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/testflight/" class="globalnav-submenu-link">TestFlight</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/fonts/" class="globalnav-submenu-link">Fonts</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/sf-symbols/" class="globalnav-submenu-link">SF Symbols</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/icon-composer/" class="globalnav-submenu-link">Icon Composer</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="
+  globalnav-item
+  globalnav-item-support
+  globalnav-item-menu
+  globalnav-item-submenu
+" style="--r-globalnav-flyout-item-number: 6;">
+							<ul class="globalnav-submenu-trigger-group">
+								<li class="globalnav-submenu-trigger-item">
+									<a href="/support/" aria-label="Support" class="globalnav-link globalnav-submenu-trigger-link globalnav-link-support">
+										<span class="globalnav-link-text-container">
+											<span class="globalnav-link-text">Support</span>
+										</span>
+										<span class="globalnav-link-chevron">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m8.1155 30.358a.6.6 0 1 1 -.831.8653l-7-6.7242a.6.6 0 0 1 -.0045-.8613l7-6.8569a.6.6 0 1 1 .84.8574l-6.5582 6.4238z"></path>
+											</svg>
+										</span>
+									</a>
+								</li>
+								<li class="globalnav-submenu-trigger-item">
+									<button id="globalnav-menubutton-link-support" class="globalnav-submenu-trigger-button" aria-expanded="false" aria-controls="globalnav-submenu-link-support" aria-label="Support menu">
+										<span class="globalnav-image-regular globalnav-submenu-button-icon">
+											<svg height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg">
+												<path d="m4.6725 6.635-2.655-2.667a.445.445 0 0 1 -.123-.304.4331.4331 0 0 1 .427-.439h.006a.447.447 0 0 1 .316.135l2.357 2.365 2.356-2.365a.458.458 0 0 1 .316-.135.433.433 0 0 1 .433.433v.006a.4189.4189 0 0 1 -.123.3l-2.655 2.671a.4451.4451 0 0 1 -.327.14.464.464 0 0 1 -.328-.14z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact globalnav-submenu-button-icon">
+											<svg height="48" viewBox="0 0 9 48" width="9" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7.4382 24.0621-6.5581-6.4238c-.2368-.2319-.2407-.6118-.0088-.8486.2324-.2373.6123-.2407.8486-.0088l7 6.8569c.1157.1138.1807.2695.1802.4316-.001.1621-.0674.3174-.1846.4297l-7 6.7242c-.1162.1118-.2661.1675-.4155.1675-.1577 0-.3149-.062-.4326-.1846-.2295-.2388-.2222-.6187.0171-.8481l6.5537-6.2959z"></path>
+											</svg>
+										</span>
+									</button>
+								</li>
+							</ul>
+							<div id="globalnav-submenu-link-support" class="globalnav-flyout globalnav-submenu" aria-labelledby="globalnav-menubutton-link-support" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: auto; --r-globalnav-flyout-rate: 240ms;">
+								<div class="globalnav-flyout-scroll-container">
+									<div class="globalnav-flyout-content globalnav-submenu-content" style="--r-globalnav-flyout-elevated-group-count: 1; --r-globalnav-flyout-group-total: 2; --r-globalnav-flyout-item-total: 7;">
+										<!-- Explore -->
+										<div class="globalnav-submenu-group globalnav-submenu-group-elevated" style="--r-globalnav-flyout-group-number: 0;">
+
+											<h2 class="globalnav-submenu-header" id="explore-support" style="--r-globalnav-flyout-item-number: 1;">Explore Support</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="explore-support">
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 2;"><a href="/support/" class="globalnav-submenu-link">Overview</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 3;"><a href="/help/" class="globalnav-submenu-link">Help Guides</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 4;"><a href="/forums/" class="globalnav-submenu-link">Developer Forums<span class="loc-en-only"></span></a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 5;"><a href="/feedback-assistant/" class="globalnav-submenu-link">Feedback Assistant</a></li>
+												<li class="globalnav-submenu-list-item-elevated" style="--r-globalnav-flyout-item-number: 6;"><a href="/contact/" class="globalnav-submenu-link">Contact Us</a></li>
+											</ul>
+										</div>
+										<!-- Featured -->
+										<div class="globalnav-submenu-group" style="--r-globalnav-flyout-group-number: 1;">
+
+											<h2 class="globalnav-submenu-header" id="support-help" style="--r-globalnav-flyout-item-number: 1;">Featured</h2>
+											<ul class="globalnav-submenu-list" aria-labelledby="support-help">
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 2;"><a href="/help/account/" class="globalnav-submenu-link">Account Help</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 3;"><a href="/app-store/review/guidelines/" class="globalnav-submenu-link">App Review Guidelines</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 4;"><a href="/help/app-store-connect/" class="globalnav-submenu-link">App Store Connect Help</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 5;"><a href="/news/upcoming-requirements/" class="globalnav-submenu-link">Upcoming Requirements</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 6;"><a href="/support/terms/" class="globalnav-submenu-link">Agreements and Guidelines</a></li>
+												<li class="globalnav-submenu-list-item" style="--r-globalnav-flyout-item-number: 7;"><a href="/system-status/" class="globalnav-submenu-link">System Status<span class="loc-en-only"></span></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<!-- Search -->
+			<li data-topnav-flyout-label="Search" class="globalnav-item globalnav-search shift-0-1" data-globalnav-iconflyout-enabled="true">
+				<a role="button" id="globalnav-menubutton-link-search" href="/search/" data-topnav-flyout-trigger-regular="true" data-topnav-flyout-trigger-compact="true" aria-label="Search" class="globalnav-link globalnav-link-search">
+					<span class="globalnav-image-regular">
+						<svg xmlns="http://www.w3.org/2000/svg" width="15px" height="44px" viewBox="0 0 15 44">
+							<path d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z"></path>
+						</svg>
+					</span>
+					<span class="globalnav-image-compact">
+						<svg height="48" viewBox="0 0 17 48" width="17" xmlns="http://www.w3.org/2000/svg">
+							<path d="m16.2294 29.9556-4.1755-4.0821a6.4711 6.4711 0 1 0 -1.2839 1.2625l4.2005 4.1066a.9.9 0 1 0 1.2588-1.287zm-14.5294-8.0017a5.2455 5.2455 0 1 1 5.2455 5.2527 5.2549 5.2549 0 0 1 -5.2455-5.2527z"></path>
+						</svg>
+					</span>
+				</a>
+				<div id="globalnav-submenu-search" aria-labelledby="globalnav-menubutton-link-search" class="globalnav-flyout globalnav-submenu" style="--r-globalnav-flyout-item-total: 0; --r-globalnav-flyout-group-number: 0; --r-globalnav-flyout-height: 388px; --r-globalnav-flyout-rate: 240ms;">
+					<div class="globalnav-flyout-scroll-container">
+						<div class="globalnav-flyout-content globalnav-submenu-content">
+							<form action="/search/" method="get" class="globalnav-searchfield">
+								<div class="globalnav-searchfield-wrapper">
+									<input placeholder="Search" name="q" aria-label="Search" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false" class="globalnav-searchfield-input">
+									<input id="globalnav-searchfield-src" type="hidden" name="src" value="globalnav">
+									<button aria-label="Clear search" tabindex="-1" type="button" class="globalnav-searchfield-reset" disabled="" aria-hidden="true">
+										<span class="globalnav-image-regular">
+											<svg height="14" viewBox="0 0 14 14" width="14" xmlns="http://www.w3.org/2000/svg">
+												<path d="m7 .0339a6.9661 6.9661 0 1 0 6.9661 6.9661 6.9661 6.9661 0 0 0 -6.9661-6.9661zm2.798 8.9867a.55.55 0 0 1 -.778.7774l-2.02-2.02-2.02 2.02a.55.55 0 0 1 -.7784-.7774l2.0206-2.0206-2.0204-2.02a.55.55 0 0 1 .7782-.7778l2.02 2.02 2.02-2.02a.55.55 0 0 1 .778.7778l-2.0203 2.02z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact">
+											<svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+												<path d="m0 8a8.0474 8.0474 0 0 1 7.9922-8 8.0609 8.0609 0 0 1 8.0078 8 8.0541 8.0541 0 0 1 -8 8 8.0541 8.0541 0 0 1 -8-8zm5.6549 3.2863 2.3373-2.353 2.3451 2.353a.6935.6935 0 0 0 .4627.1961.6662.6662 0 0 0 .6667-.6667.6777.6777 0 0 0 -.1961-.4706l-2.3451-2.3373 2.3529-2.3607a.5943.5943 0 0 0 .1961-.4549.66.66 0 0 0 -.6667-.6589.6142.6142 0 0 0 -.447.1961l-2.3686 2.3606-2.353-2.3527a.6152.6152 0 0 0 -.447-.1883.6529.6529 0 0 0 -.6667.651.6264.6264 0 0 0 .1961.4549l2.3451 2.3529-2.3451 2.353a.61.61 0 0 0 -.1961.4549.6661.6661 0 0 0 .6667.6667.6589.6589 0 0 0 .4627-.1961z"></path>
+											</svg>
+										</span>
+									</button>
+									<button aria-label="Submit search" tabindex="-1" aria-hidden="true" type="submit" class="globalnav-searchfield-submit" disabled="">
+										<span class="globalnav-image-regular">
+											<svg height="32" viewBox="0 0 30 32" width="30" xmlns="http://www.w3.org/2000/svg">
+												<path d="m23.3291 23.3066-4.35-4.35c-.0105-.0105-.0247-.0136-.0355-.0235a6.8714 6.8714 0 1 0 -1.5736 1.4969c.0214.0256.03.0575.0542.0815l4.35 4.35a1.1 1.1 0 1 0 1.5557-1.5547zm-15.4507-8.582a5.6031 5.6031 0 1 1 5.603 5.61 5.613 5.613 0 0 1 -5.603-5.61z"></path>
+											</svg>
+										</span>
+										<span class="globalnav-image-compact">
+											<svg width="38" height="40" viewBox="0 0 38 40" xmlns="http://www.w3.org/2000/svg">
+												<path d="m28.6724 27.8633-5.07-5.07c-.0095-.0095-.0224-.0122-.032-.0213a7.9967 7.9967 0 1 0 -1.8711 1.7625c.0254.03.0357.0681.0642.0967l5.07 5.07a1.3 1.3 0 0 0 1.8389-1.8379zm-18.0035-10.0033a6.5447 6.5447 0 1 1 6.545 6.5449 6.5518 6.5518 0 0 1 -6.545-6.5449z"></path>
+											</svg>
+										</span>
+									</button>
+								</div>
+							</form>
+							<div class="globalnav-searchresults">
+								<div class="globalnav-searchresults-current">
+									<div class="globalnav-searchresults-container" style="--r-globalnav-flyout-group-number: 0;">
+
+										<h2 class="globalnav-searchresults-header" style="--r-globalnav-flyout-item-number: 0;">Quick Links</h2>
+										<ul class="globalnav-searchresults-list" role="list">
+											<li class="globalnav-searchresults-list-item" role="listitem" style="--r-globalnav-flyout-item-number: 1;">
+												<a class="globalnav-searchresults-list-link" href="/events/" data-query="no keyword" data-section="quicklinks" data-items="5" data-index="0" data-label="Events">
+													<span class="globalnav-searchresults-list-icon">
+														<span class="globalnav-image-regular globalnav-link-image">
+															<svg height="16" viewBox="0 0 9 16" width="9" xmlns="http://www.w3.org/2000/svg">
+																<path d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z"></path>
+															</svg>
+														</span>
+														<span class="globalnav-image-compact globalnav-link-image">
+															<svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg">
+																<path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path>
+															</svg>
+														</span>
+													</span>
+													<span class="globalnav-searchresults-list-text">Events</span>
+												</a>
+											</li>
+											<li class="globalnav-searchresults-list-item" role="listitem" style="--r-globalnav-flyout-item-number: 2;">
+												<a class="globalnav-searchresults-list-link" href="/news/" data-query="no keyword" data-section="quicklinks" data-items="5" data-index="1" data-label="News">
+													<span class="globalnav-searchresults-list-icon">
+														<span class="globalnav-image-regular globalnav-link-image">
+															<svg height="16" viewBox="0 0 9 16" width="9" xmlns="http://www.w3.org/2000/svg">
+																<path d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z"></path>
+															</svg>
+														</span>
+														<span class="globalnav-image-compact globalnav-link-image">
+															<svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg">
+																<path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path>
+															</svg>
+														</span>
+													</span>
+													<span class="globalnav-searchresults-list-text">News</span>
+												</a>
+											</li>
+											<li class="globalnav-searchresults-list-item" role="listitem" style="--r-globalnav-flyout-item-number: 3;">
+												<a class="globalnav-searchresults-list-link" href="/forums/" data-query="no keyword" data-section="quicklinks" data-items="5" data-index="2" data-label="Forums">
+													<span class="globalnav-searchresults-list-icon">
+														<span class="globalnav-image-regular globalnav-link-image">
+															<svg height="16" viewBox="0 0 9 16" width="9" xmlns="http://www.w3.org/2000/svg">
+																<path d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z"></path>
+															</svg>
+														</span>
+														<span class="globalnav-image-compact globalnav-link-image">
+															<svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg">
+																<path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path>
+															</svg>
+														</span>
+													</span>
+													<span class="globalnav-searchresults-list-text">Forums<span class="loc-en-only"></span></span>
+												</a>
+											</li>
+											<li class="globalnav-searchresults-list-item" role="listitem" style="--r-globalnav-flyout-item-number: 4;">
+												<a class="globalnav-searchresults-list-link" href="/documentation/samplecode/" data-query="no keyword" data-section="quicklinks" data-items="5" data-index="3" data-label="Sample Code">
+													<span class="globalnav-searchresults-list-icon">
+														<span class="globalnav-image-regular globalnav-link-image">
+															<svg height="16" viewBox="0 0 9 16" width="9" xmlns="http://www.w3.org/2000/svg">
+																<path d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z"></path>
+															</svg>
+														</span>
+														<span class="globalnav-image-compact globalnav-link-image">
+															<svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg">
+																<path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path>
+															</svg>
+														</span>
+													</span>
+													<span class="globalnav-searchresults-list-text">Sample Code<span class="loc-en-only"></span></span>
+												</a>
+											</li>
+											<li class="globalnav-searchresults-list-item" role="listitem" style="--r-globalnav-flyout-item-number: 5;">
+												<a class="globalnav-searchresults-list-link" href="/videos/" data-query="no keyword" data-section="quicklinks" data-items="5" data-index="4" data-label="Videos">
+													<span class="globalnav-searchresults-list-icon">
+														<span class="globalnav-image-regular globalnav-link-image">
+															<svg height="16" viewBox="0 0 9 16" width="9" xmlns="http://www.w3.org/2000/svg">
+																<path d="m8.6124 8.1035-2.99 2.99a.5.5 0 0 1 -.7071-.7071l2.1366-2.1364h-6.316a.5.5 0 0 1 0-1h6.316l-2.1368-2.1367a.5.5 0 0 1 .7071-.7071l2.99 2.99a.5.5 0 0 1 .0002.7073z"></path>
+															</svg>
+														</span>
+														<span class="globalnav-image-compact globalnav-link-image">
+															<svg height="25" viewBox="0 0 13 25" width="13" xmlns="http://www.w3.org/2000/svg">
+																<path d="m12.3577 13.4238-4.4444 4.4444a.6.6 0 0 1 -.8486-.8477l3.37-3.37h-9.3231a.65.65 0 0 1 0-1.3008h9.3232l-3.37-3.37a.6.6 0 0 1 .8486-.8477l4.4444 4.4444a.5989.5989 0 0 1 -.0001.8474z"></path>
+															</svg>
+														</span>
+													</span>
+													<span class="globalnav-searchresults-list-text">Videos</span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<!-- Account -->
+			<li id="globalnav-account" class="globalnav-item globalnav-account">
+				<div class="globalnav-account-wrapper">
+					<a href="/account/" aria-label="Account" class="globalnav-link globalnav-link-account">
+						<span class="globalnav-image-regular globalnav-link-image" aria-hidden="true">
+							<svg width="17" height="47" viewBox="0 0 117.045 120" xmlns="http://www.w3.org/2000/svg" focusable="false" preserveAspectRatio="xMidYMid meet">
+								<path fill="currentColor" d="M58.496,109.742c27.503,0 49.825,-22.271 49.825,-49.774c0,-27.503 -22.322,-49.773 -49.825,-49.773c-27.451,0 -49.773,22.27 -49.773,49.773c0,27.503 22.322,49.774 49.773,49.774zM58.496,101.474c-22.945,0 -41.465,-18.561 -41.465,-41.506c0,-22.944 18.52,-41.506 41.465,-41.506c22.945,0 41.506,18.562 41.506,41.506c0,22.945 -18.561,41.506 -41.506,41.506zM91.931,92.156l-0.156,-0.549c-2.433,-7.174 -15.338,-15.037 -33.279,-15.037c-17.92,0 -30.773,7.852 -33.227,15.005l-0.156,0.581c8.825,8.692 23.891,13.762 33.394,13.762c9.575,0 24.525,-5.028 33.424,-13.762zM58.496,68.304c9.398,0.103 16.759,-7.924 16.759,-18.421c0,-9.875 -7.393,-18.048 -16.759,-18.048c-9.314,0 -16.769,8.173 -16.707,18.048c0.052,10.497 7.31,18.317 16.707,18.421z" />
+							</svg>
+						</span>
+						<span class="globalnav-image-compact globalnav-link-image" aria-hidden="true">
+							<svg width="20" height="51" viewBox="0 0 117.045 120" xmlns="http://www.w3.org/2000/svg" focusable="false" preserveAspectRatio="xMidYMid meet">
+								<path fill="currentColor" d="M58.496,109.742c27.503,0 49.825,-22.271 49.825,-49.774c0,-27.503 -22.322,-49.773 -49.825,-49.773c-27.451,0 -49.773,22.27 -49.773,49.773c0,27.503 22.322,49.774 49.773,49.774zM58.496,101.474c-22.945,0 -41.465,-18.561 -41.465,-41.506c0,-22.944 18.52,-41.506 41.465,-41.506c22.945,0 41.506,18.562 41.506,41.506c0,22.945 -18.561,41.506 -41.506,41.506zM91.931,92.156l-0.156,-0.549c-2.433,-7.174 -15.338,-15.037 -33.279,-15.037c-17.92,0 -30.773,7.852 -33.227,15.005l-0.156,0.581c8.825,8.692 23.891,13.762 33.394,13.762c9.575,0 24.525,-5.028 33.424,-13.762zM58.496,68.304c9.398,0.103 16.759,-7.924 16.759,-18.421c0,-9.875 -7.393,-18.048 -16.759,-18.048c-9.314,0 -16.769,8.173 -16.707,18.048c0.052,10.497 7.31,18.317 16.707,18.421z" />
+							</svg>
+						</span>
+					</a>
+				</div>
+			</li>
+		</ul>
+		<div class="globalnav-menutrigger">
+			<button id="globalnav-menutrigger-button" aria-controls="globalnav-list" aria-label="Menu" class="globalnav-menutrigger-button"><svg width="18" height="18" viewBox="0 0 18 18">
+					<polyline id="globalnav-menutrigger-bread-bottom" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" points="2 12, 16 12" class="globalnav-menutrigger-bread globalnav-menutrigger-bread-bottom">
+						<animate id="globalnav-anim-menutrigger-bread-bottom-open" attributeName="points" keyTimes="0;0.5;1" dur="0.24s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1" values=" 2 12, 16 12; 2 9, 16 9; 3.5 15, 15 3.5"></animate>
+						<animate id="globalnav-anim-menutrigger-bread-bottom-close" attributeName="points" keyTimes="0;0.5;1" dur="0.24s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1" values=" 3.5 15, 15 3.5; 2 9, 16 9; 2 12, 16 12"></animate>
+					</polyline>
+					<polyline id="globalnav-menutrigger-bread-top" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" points="2 5, 16 5" class="globalnav-menutrigger-bread globalnav-menutrigger-bread-top">
+						<animate id="globalnav-anim-menutrigger-bread-top-open" attributeName="points" keyTimes="0;0.5;1" dur="0.24s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1" values=" 2 5, 16 5; 2 9, 16 9; 3.5 3.5, 15 15"></animate>
+						<animate id="globalnav-anim-menutrigger-bread-top-close" attributeName="points" keyTimes="0;0.5;1" dur="0.24s" begin="indefinite" fill="freeze" calcMode="spline" keySplines="0.42, 0, 1, 1;0, 0, 0.58, 1" values=" 3.5 3.5, 15 15; 2 9, 16 9; 2 5, 16 5"></animate>
+					</polyline>
+				</svg>
+			</button>
+		</div>
+	</div>
+	<span style="visibility: hidden; position: absolute; top: 0px; z-index: -1;">&nbsp;</span>
+</nav>
+<!-- <div class="globalnav-placeholder"></div> -->
+<script src="/assets/scripts/ac-globalnav.built.js?01172638057"></script>
+	<!-- metrics -->
+<script>
+	/* RSID: */
+	var s_account="awdappledeveloper"
+</script>	
+<script src="/assets/metrics/scripts/analytics.js"></script>
+<script>
+	s_sections = [
+		{
+			"pattern": "^/documentation",
+			"channel": "www.documentation.developer"
+		},
+		{
+			"pattern": "^/library",
+			"channel": "www.documentation.developer"
+		},
+		{
+			"pattern": "^/tutorials",
+			"channel": "www.documentation.developer"
+		},	
+		{
+			"pattern": "human\\-interface\\-guidelines",
+			"channel": "www.hig.developer"
+		},
+		{
+			"pattern": "/testflight/",
+			"channel": "www.appstoreconnect.developer"
+		},
+		{
+			"pattern": "/app\\-store\\-connect/",
+			"channel": "www.appstoreconnect.developer"
+		},
+		{
+			"pattern": "/support/app\\-store\\-connect/",
+			"channel": "www.appstoreconnect.developer"
+		},
+		{
+			"pattern": "/help/app\\-store\\-connect/",
+			"channel": "www.appstoreconnect.developer"
+		},
+		{
+			"pattern": "/wwdc/",
+			"channel": "www.wwdc.developer"
+		},
+		{
+			"pattern": "/wwdc\\d{2}/",
+			"channel": "www.wwdc.developer"
+		},
+		{
+			"pattern": "/videos/",
+			"channel": "www.videos.developer"
+		},
+		{
+			"pattern": "^/account",
+			"channel": "www.account.developer"
+		},
+		{
+			"pattern": "downloads?",
+			"channel": "www.download.developer"
+		},
+		{
+			"pattern": "/localization/",
+			"channel": "www.appstore.developer"
+		},	
+		{
+			"pattern": "/app\\-store/",
+			"channel": "www.appstore.developer"
+		},
+		{
+			"pattern": "/in\\-app\\-purchase/",
+			"channel": "www.appstore.developer"
+		},
+		{
+			"pattern": "/cn/",
+			"channel": "www.cn.developer"
+		},
+		{
+			"pattern": "/jp/",
+			"channel": "www.jp.developer"
+		},
+		{
+			"pattern": "/kr/",
+			"channel": "www.kr.developer"
+		},
+		{
+			"pattern": "/de/",
+			"channel": "www.de.developer"
+		},
+		{
+			"pattern": "/la/",
+			"channel": "www.la.developer"
+		},
+		{
+			"pattern": "/fr/",
+			"channel": "www.fr.developer"
+		},
+		{
+			"pattern": "/it/",
+			"channel": "www.it.developer"
+		},
+		{
+			"pattern": "/br/",
+			"channel": "www.br.developer"
+		}
+	];
+	
+	s.pageName= AC && AC.Tracking && AC.Tracking.pageName();
+	s.channel="www.en.developer";
+	
+	s_sections.forEach((s_section) => {
+		var regex = new RegExp(s_section.pattern);
+		
+		if(location.pathname.search(regex) !== -1) {
+			s.channel=s_section.channel;
+		}
+	});
+	
+	/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+	var s_code=s.t();if(s_code)document.write(s_code)
+</script>
+<!-- /metrics -->
+
+	<link rel="stylesheet" property="stylesheet" href="/assets/styles/localnav.css" type="text/css" />
+<input type="checkbox" id="localnav-menustate" class="localnav-menustate"/>
+<nav id="localnav" class="localnav localnav-scrim" data-sticky role="navigation">
+	<div class="localnav-wrapper">
+		<div class="localnav-background"></div>
+		<div class="localnav-content">
+			<h2 class="localnav-title">
+				<a href="/videos/">Videos</a>
+			</h2>
+
+			<div class="localnav-menu">
+				<a href="#localnav-menustate" class="localnav-menucta-anchor localnav-menucta-anchor-open" id="localnav-menustate-open">
+					<span class="localnav-menucta-anchor-label">Open Menu</span>
+				</a>
+				<a href="#" class="localnav-menucta-anchor localnav-menucta-anchor-close" id="localnav-menustate-close">
+					<span class="localnav-menucta-anchor-label">Close Menu</span>
+				</a>
+				<div class="localnav-menu-tray">
+					<ul class="localnav-menu-items">
+						<li class="localnav-menu-item">
+							<a href="/videos/" class="localnav-menu-link">Collections</a>
+						</li>
+						<li class="localnav-menu-item">
+							<a href="/videos/topics/" class="localnav-menu-link">Topics</a>
+						</li>
+						<li class="localnav-menu-item">
+							<a href="/videos/all-videos/" class="localnav-menu-link">All Videos</a>
+						</li>
+						<li class="localnav-menu-item">
+							<a href="/videos/about/" class="localnav-menu-link">About</a>
+						</li>
+					</ul>
+				</div>
+				<div class="localnav-actions localnav-actions-center">
+					<div class="localnav-action localnav-action-menucta" aria-hidden="true">
+						<label for="localnav-menustate" class="localnav-menucta">
+							<span class="localnav-menucta-chevron"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+<label id="localnav-curtain" for="localnav-menustate"></label>
+<script src="/assets/scripts/ac-localnav.built.js"></script>
+<script type="text/javascript" src="/assets/scripts/localnav.js"></script>
+	<main id="main" class="main " role="main">
+
+		<section >
+
+			<div class="section-content">
+								<section class="row">
+					<section class="column large-12 small-12  padding-top-small large-centered no-padding-bottom">
+						<!-- back link -->
+						<p class="back-link smaller">
+														<a class="icon icon-before icon-chevronleft" href="/videos/wwdc2024/">Back to WWDC24</a>
+													</p>
+					</section>
+				</section>
+								
+				<!-- video player -->
+				<section class="video-wrapper row">
+					<section class="column large-12 small-12  padding-top-small padding-bottom-small large-centered">
+												<div class="developer-video-player">
+							<div id="video-status-overlay" class="developer-video-overlay" style="display: none">
+								<div class="video-status-content">
+									<div id="video-status-text"></div>
+									<img class="video-status-icon" id="icon-backward" src="/assets/elements/icons/symbols/gobackward5.svg" style="display: none" />
+									<img class="video-status-icon" id="icon-forward" src="/assets/elements/icons/symbols/goforward5.svg" style="display: none" />
+								</div>
+							</div>
+							<video id="video" class="video large-centered" poster="https://devimages-cdn.apple.com/wwdc-services/images/C03E6E6D-A32A-41D0-9E50-C3C6059820AA/9161/9161_wide_900x506_2x.jpg" controls="" preload="none" src="https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/cmaf.m3u8" data-id="wwdc2024-10068" data-locale="en" data-hero-source="https://devimages-cdn.apple.com/wwdc-services/images/C03E6E6D-A32A-41D0-9E50-C3C6059820AA/9161/9161_wide_900x506_2x.jpg"></video>
+						</div>
+						<div class="no-video-banner hidden">
+							<div class="no-video-copy">
+								<img src="https://devimages-cdn.apple.com/wwdc-services/images/C03E6E6D-A32A-41D0-9E50-C3C6059820AA/9161/9161_wide_900x506_2x.jpg" style="width:100%">
+							</div>
+							</span>
+						</div>
+
+											</section>
+				</section>
+
+			</section>
+
+		</section>
+
+		<section class="bg-light padding-top-small padding-bottom">
+
+			<div class="section-content">
+		
+			<!-- tab menu -->
+			<section class="tab-menu row divider-bottom">
+
+				<section class="column large-11 small-12  padding-top-small padding-bottom-small large-centered tab-menu-container">
+										 
+																																																		<ul class="tabs">
+						
+						<li class="tab" data-supplement-id="details" data-language-code="en" data-video-id="wwdc2024-10068" ><a href="#"><span class="smaller">About</span></a></li>
+						
+						
+												<li class="tab" data-supplement-id="transcript" data-language-code="en" data-video-id="wwdc2024-10068"><a href="#"><span class="smaller">Transcript</span></a></li>
+																		<li class="tab" data-supplement-id="sample-code" data-language-code="en" data-video-id="wwdc2024-10068"><a href="#"><span class="smaller">Code</span></a></li>
+												
+					</ul>
+									</section>
+
+			</section>
+
+			<!-- supplements -->
+			<section class="row">
+
+				<section class="column large-11 small-12  large-centered no-padding-top no-padding-bottom">
+
+					<ul class="supplements hidden">
+
+						<!-- details -->
+						<li class="supplement details " data-supplement-id="details">
+							
+							<div class="badge-available-on-wrapper">
+														<h1>Bring your Live Activity to Apple Watch</h1>
+							</div>
+
+							<p>Bring Live Activities into the Smart Stack on Apple Watch with iOS 18 and watchOS 11. We'll cover how Live Activities are presented on Apple Watch, as well as how you can enhance their presentation for the Smart Stack. We'll also explore additional considerations to ensure Live Activities on Apple Watch always present up-to-date information.</p>
+
+															
+								<h2>Chapters</h2>
+								<ul class="no-bullet chapter-list">
+																	<li class="chapter-item" data-start-time="0">0:00 - <a class="jump-to-time" href="/videos/play/wwdc2024/10068/?time=0" data-start-time="0" data-chapter-end-time="67" data-chapter-lenght="67" data-chapter-index="1">Introduction</a></li>
+																	<li class="chapter-item" data-start-time="67">1:07 - <a class="jump-to-time" href="/videos/play/wwdc2024/10068/?time=67" data-start-time="67" data-chapter-end-time="202" data-chapter-lenght="135" data-chapter-index="2">Review your Live Activity</a></li>
+																	<li class="chapter-item" data-start-time="202">3:22 - <a class="jump-to-time" href="/videos/play/wwdc2024/10068/?time=202" data-start-time="202" data-chapter-end-time="362" data-chapter-lenght="160" data-chapter-index="3">Customize for Apple Watch</a></li>
+																	<li class="chapter-item" data-start-time="362">6:02 - <a class="jump-to-time" href="/videos/play/wwdc2024/10068/?time=362" data-start-time="362" data-chapter-end-time="627" data-chapter-lenght="265" data-chapter-index="4">Keep it live</a></li>
+																</ul>
+							
+														<h2>Resources</h2>
+
+							<ul class="links small">
+																																					<li class="developerForum"><a href="https://developer.apple.com/forums/topics/app-and-system-services?cid=vf-a-0010" target="_blank">Forum: App & System Services</a></li>
+																																							<li class="document"><a href="https://developer.apple.com/documentation/ActivityKit/starting-and-updating-live-activities-with-activitykit-push-notifications" target="_blank">Starting and updating Live Activities with ActivityKit push notifications</a></li>
+																																							<li class="document"><a href="https://developer.apple.com/documentation/ActivityKit/displaying-live-data-with-live-activities" target="_blank">Displaying live data with Live Activities</a></li>
+																											
+																	<li class="download">
+										<ul class="options">
+																						<li><a href="https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/downloads/wwdc2024-10068_hd.mp4?dl=1">HD Video</a></li>
+																																	<li><a href="https://devstreaming-cdn.apple.com/videos/wwdc/2024/10068/4/C621DA91-3F64-481C-8D10-25A5C5FCD587/downloads/wwdc2024-10068_sd.mp4?dl=1">SD Video</a></li>
+																					</ul>
+									</li>
+																
+															</ul>
+							
+							
+						</li>
+
+						<!-- transcript -->
+						<li class="supplement transcript" data-supplement-id="transcript" data-shortcut-base-url="/videos/play/wwdc2024/10068/">
+							<div class="grid grid-gutterless margin-bottom-small">
+								<div class="grid-item large-span-11 medium-span-11 small-span-11">
+									<div class="form-textbox form-textbox-with-lefticon form-textbox-with-righticon">
+										<input type="text" id="transcript-search-box" class="transcript-search searchbar form-textbox-input" aria-labelledby="textbox-label"  />
+										<span class="form-textbox-label" id="textbox-label" aria-hidden="true">Search this video…</span>
+										<div class="form-textbox-lefticon form-icons-focusable">
+											<span class="form-icons form-icons-search15"></span>
+										</div>
+									</div>
+								</div>
+								<div class="grid-item large-span-1 medium-span-1 small-span-1">									
+									<div style="font-size:34px" id="get-transcript">
+										<sf-symbol name="arrow.down.document" weight="light" scale="small" mode="hierarchical"></sf-symbol>
+									</div>
+
+								</div>
+							</div>
+
+							<section id="transcript-content">
+								<p><span class="sentence"><span data-start="7.0">Hi, I'm Anne, and I’m a Frameworks engineer working on watchOS. </span></span><span class="sentence"><span data-start="12.0">I’m delighted to show you how to deliver a great experience on Apple Watch </span></span><span class="sentence"><span data-start="17.0">for your existing iOS Live Activity.</p><p></span></span><span class="sentence"><span data-start="21.0">Live Activities provide a way for you to show up-to-date information about </span></span><span class="sentence"><span data-start="25.0">an activity or event from your app in glanceable locations </span></span><span class="sentence"><span data-start="29.0">like the Lock Screen, in StandBy, and in the Dynamic Island.</p><p></span></span><span class="sentence"><span data-start="35.0">Now, in iOS 18 and watchOS 11, your iOS Live Activity will appear </span></span><span class="sentence"><span data-start="41.0">in the Smart Stack on Apple Watch automatically.</p><p></span></span><span class="sentence"><span data-start="46.0">I’ll start by talking about how your Live Activity appears on Apple Watch </span></span><span class="sentence"><span data-start="50.0">after updating to watchOS 11.</p><p></span></span><span class="sentence"><span data-start="53.0">Then I’ll show you how you can customize your Live Activity view </span></span><span class="sentence"><span data-start="57.0">for the SmartStack. </span></span><span class="sentence"><span data-start="59.0">And I’ll fill you in on some details about Activity updates for watchOS </span></span><span class="sentence"><span data-start="63.0">and how to keep your Live Activity up-to-date.</p><p></span></span><span class="sentence"><span data-start="68.0">Let’s get started by reviewing how your existing iOS Live Activity </span></span><span class="sentence"><span data-start="72.0">appears on Apple Watch in watchOS 11.</p><p></span></span><span class="sentence"><span data-start="77.0">When people leave the Lock Screen on iPhone with a Dynamic Island, </span></span><span class="sentence"><span data-start="81.0">your Live Activity shifts to showing the compact leading and trailing views </span></span><span class="sentence"><span data-start="85.0">in the Dynamic Island. </span></span><span class="sentence"><span data-start="88.0">The views in the Dynamic Island come from the “compact leading” </span></span><span class="sentence"><span data-start="91.0">and “compact trailing” view builders. </span></span><span class="sentence"><span data-start="95.0">On Apple Watch, these same views are automatically shown in the Smart Stack, </span></span><span class="sentence"><span data-start="100.0">along with a title indicating that they were provided by your app. </span></span><span class="sentence"><span data-start="105.0">This is a great opportunity for you to consider whether your compact views </span></span><span class="sentence"><span data-start="109.0">are making the best use of the space available to keep people up to date. </span></span><span class="sentence"><span data-start="114.0">Here, my app is showing the estimated time until my delivery in the leading view, </span></span><span class="sentence"><span data-start="119.0">and the current status of my order in the trailing view.</p><p></span></span><span class="sentence"><span data-start="124.0">Updates to your Live Activity on iOS are automatically sent to Apple Watch. </span></span><span class="sentence"><span data-start="129.0">On iOS, alerting updates animate to display your </span></span><span class="sentence"><span data-start="133.0">Dynamic Island Expanded Views. </span></span><span class="sentence"><span data-start="136.0">When the alerting update is received on Apple Watch, </span></span><span class="sentence"><span data-start="139.0">if it’s currently at the watch face, the system automatically launches </span></span><span class="sentence"><span data-start="144.0">the Smart Stack, displays your alert, and then shows your Live Activity.</p><p></span></span><span class="sentence"><span data-start="150.0">If an app is in the foreground, a banner is displayed at the bottom </span></span><span class="sentence"><span data-start="154.0">of the screen with your Dynamic Island compact views.</p><p></span></span><span class="sentence"><span data-start="159.0">Tapping a Live Activity shows a full-screen presentation </span></span><span class="sentence"><span data-start="163.0">with an option to open the app on iPhone.</p><p></span></span><span class="sentence"><span data-start="168.0">The Dynamic Island compact views for your iOS Live Activity </span></span><span class="sentence"><span data-start="171.0">will appear in the Smart Stack automatically. </span></span><span class="sentence"><span data-start="175.0">Review your current views to ensure that you’re showing dynamically-updating </span></span><span class="sentence"><span data-start="179.0">information to keep people informed about the state of the activity. </span></span><span class="sentence"><span data-start="184.0">This will benefit people who have updated to iOS 18 and watchOS 11, </span></span><span class="sentence"><span data-start="190.0">and your existing iPhone customers.</p><p></span></span><span class="sentence"><span data-start="194.0">So far, I’ve talked about what will happen automatically when people </span></span><span class="sentence"><span data-start="198.0">update to iOS 18 and watchOS 11. </span></span><span class="sentence"><span data-start="202.0">You also have an opportunity to provide a custom </span></span><span class="sentence"><span data-start="205.0">Live Activity view for Apple Watch. </span></span><span class="sentence"><span data-start="208.0">My app lets people order local produce to their door, </span></span><span class="sentence"><span data-start="211.0">and see the status of their deliveries using a Live Activity. </span></span><span class="sentence"><span data-start="216.0">Let’s modify it to customize the Live Activity view for Apple Watch.</p><p></span></span><span class="sentence"><span data-start="221.0">Currently my Live Activity uses the default presentation </span></span><span class="sentence"><span data-start="225.0">in the Smart Stack and shows the compact Dynamic Island views. </span></span><span class="sentence"><span data-start="230.0">I can see how that will appear in Xcode using a Preview.</p><p></span></span><span class="sentence"><span data-start="234.0">In the Canvas Device Settings, I can see all the View Styles </span></span><span class="sentence"><span data-start="238.0">in the Canvas together by selecting All Variants. </span></span><span class="sentence"><span data-start="243.0">Or I can go to Select mode and update the Canvas Device Settings </span></span><span class="sentence"><span data-start="248.0">to show the Content Smart Stack to focus on my Smart Stack view.</p><p></span></span><span class="sentence"><span data-start="254.0">To customize for the watchOS Smart Stack, </span></span><span class="sentence"><span data-start="257.0">I’ll add the supplementalActivityFamilies modifier to the WidgetConfiguration </span></span><span class="sentence"><span data-start="262.0">for my Live Activity. </span></span><span class="sentence"><span data-start="264.0">I’ll use .small to indicate support for the Smart Stack. </span></span><span class="sentence"><span data-start="268.0">Now my iOS Lock Screen View from my activity content is displayed </span></span><span class="sentence"><span data-start="272.0">in the Smart Stack instead of the compact views. </span></span><span class="sentence"><span data-start="276.0">Since I designed my lock screen content for a larger view, </span></span><span class="sentence"><span data-start="279.0">the text is being truncated on Apple Watch. </span></span><span class="sentence"><span data-start="282.0">I’m going to customize this for the Smart Stack.</p><p></span></span><span class="sentence"><span data-start="287.0">I’ll get the activityFamily Environment value. </span></span><span class="sentence"><span data-start="291.0">Then provide a new layout for my content when the activityFamily is small.</p><p></span></span><span class="sentence"><span data-start="297.0">When the activity family is medium, for the iOS Lock Screen, </span></span><span class="sentence"><span data-start="300.0">I’ll use my original content view layout.</p><p></span></span><span class="sentence"><span data-start="305.0">I can preview how my view will appear in the Smart Stack </span></span><span class="sentence"><span data-start="308.0">using the Xcode Preview for my Live Activity.</p><p></span></span><span class="sentence"><span data-start="312.0">By adding the supplementalActivityFamilies modifier, </span></span><span class="sentence"><span data-start="316.0">my Live Activity now provides a custom view when presented on Apple Watch.</p><p></span></span><span class="sentence"><span data-start="322.0">Live Activities work on Apple Watch even if you don’t have a Watch App. </span></span><span class="sentence"><span data-start="327.0">But if you do have a Watch App, you can also opt-in to open it </span></span><span class="sentence"><span data-start="330.0">from a tap on the Live Activity in the Smart Stack.</p><p></span></span><span class="sentence"><span data-start="335.0">In the Build Settings for your Watch app target, </span></span><span class="sentence"><span data-start="338.0">add a value for the Supports Launch for Live Activity Attribute Types key </span></span><span class="sentence"><span data-start="344.0">in the Info.plist section. </span></span><span class="sentence"><span data-start="347.0">To launch your Watch app for all your Live Activities, leave the value empty. </span></span><span class="sentence"><span data-start="352.0">To launch for only specific Live Activities, add an item for each </span></span><span class="sentence"><span data-start="356.0">ActivityAttributes conforming type that should launch the Watch app.</p><p></span></span><span class="sentence"><span data-start="362.0">With just a few lines of code, I’ve been able to update </span></span><span class="sentence"><span data-start="365.0">how my Live Activity appears, </span></span><span class="sentence"><span data-start="367.0">and I’ve been able to preview how this will be displayed. </span></span><span class="sentence"><span data-start="371.0">On Apple Watch, there are a few additional things you should know </span></span><span class="sentence"><span data-start="375.0">to make sure your Live Activity is showing the most up-to-date information possible </span></span><span class="sentence"><span data-start="379.0">and works just how you intended.</p><p></span></span><span class="sentence"><span data-start="383.0">I’ll cover update frequency and budgeting, handling limited connectivity, </span></span><span class="sentence"><span data-start="389.0">and adapting your Live Activity view for Always On Display.</p><p></span></span><span class="sentence"><span data-start="394.0">There are a few differences in the update frequency and budget between </span></span><span class="sentence"><span data-start="398.0">iPhone and Apple Watch.</p><p></span></span><span class="sentence"><span data-start="401.0">Live Activity updates are synchronized automatically to Apple Watch. </span></span><span class="sentence"><span data-start="406.0">You don't have to manage separate push tokens or add any code. </span></span><span class="sentence"><span data-start="411.0">To protect battery life, update synchronization is budgeted. </span></span><span class="sentence"><span data-start="416.0">The budget threshold is similar to iOS. </span></span><span class="sentence"><span data-start="420.0">If you use push updates for your Live Activity today, </span></span><span class="sentence"><span data-start="424.0">they should be within the budget for Apple Watch with no extra work. </span></span><span class="sentence"><span data-start="429.0">Apple Watch also supports high-frequency updates when requested.</p><p></span></span><span class="sentence"><span data-start="435.0">In your iOS app, consider cases where your Live Activity is updated locally </span></span><span class="sentence"><span data-start="440.0">with ActivityKit. </span></span><span class="sentence"><span data-start="442.0">Now, these updates also synchronize to Apple Watch, </span></span><span class="sentence"><span data-start="445.0">and count against its update budget. </span></span><span class="sentence"><span data-start="449.0">If an update is over budget, it may not immediately appear </span></span><span class="sentence"><span data-start="453.0">when someone’s wrist is down. </span></span><span class="sentence"><span data-start="455.0">However, when they raise their wrist, the Live Activity will show </span></span><span class="sentence"><span data-start="459.0">the latest information available.</p><p></span></span><span class="sentence"><span data-start="463.0">Connection state is another reason your activity might not receive </span></span><span class="sentence"><span data-start="467.0">timely updates on Apple Watch. </span></span><span class="sentence"><span data-start="470.0">When your Watch has a good connection to its nearby companion iPhone </span></span><span class="sentence"><span data-start="475.0">or is on the same Wi-Fi network, updates are generally sent to Apple Watch. </span></span><span class="sentence"><span data-start="481.0">With limited connectivity, Start, End, and alerting updates </span></span><span class="sentence"><span data-start="486.0">are prioritized for Apple Watch.</p><p></span></span><span class="sentence"><span data-start="489.0">The system helps people know that they may not be seeing current information </span></span><span class="sentence"><span data-start="494.0">by showing a last connected message in the Smart Stack. </span></span><span class="sentence"><span data-start="498.0">Also consider adjustments your activity view may need for Always On Display. </span></span><span class="sentence"><span data-start="504.0">When the watch is in Always On mode, the system will automatically switch </span></span><span class="sentence"><span data-start="509.0">the Color Scheme to dark and set reduced luminance </span></span><span class="sentence"><span data-start="513.0">when someone puts their wrist down.</p><p></span></span><span class="sentence"><span data-start="516.0">If you have brightly-colored views, use the isLuminanceReduced </span></span><span class="sentence"><span data-start="521.0">Environment value to remove bright elements or reduce their brightness.</p><p></span></span><span class="sentence"><span data-start="527.0">In my view, I’m using a different tint for the gauge when the luminance is reduced </span></span><span class="sentence"><span data-start="532.0">to reduce the brightness and preserve readability.</p><p></span></span><span class="sentence"><span data-start="537.0">If you want your Live Activity to have a light appearance, </span></span><span class="sentence"><span data-start="540.0">set the preferredColorScheme to light. </span></span><span class="sentence"><span data-start="544.0">It will automatically use the dark appearance in Always On Display </span></span><span class="sentence"><span data-start="548.0">with reduced luminance. </span></span><span class="sentence"><span data-start="550.0">Semantic colors, like primary, will automatically use an appropriate color </span></span><span class="sentence"><span data-start="555.0">for the color scheme. </span></span><span class="sentence"><span data-start="557.0">Now my activity will look great and show the best information possible </span></span><span class="sentence"><span data-start="562.0">at all times.</p><p></span></span><span class="sentence"><span data-start="566.0">Beginning in iOS 18 and watchOS 11, your iOS Live Activity will appear </span></span><span class="sentence"><span data-start="571.0">in the Smart Stack on Apple Watch automatically. </span></span><span class="sentence"><span data-start="576.0">Ensure your Dynamic Island Compact Views are timely, relevant, and informative.</p><p></span></span><span class="sentence"><span data-start="583.0">Use supplementalActivityFamilies to customize your Live Activity </span></span><span class="sentence"><span data-start="587.0">for Apple Watch. </span></span><span class="sentence"><span data-start="589.0">For more information about great Live Activity design, </span></span><span class="sentence"><span data-start="593.0">check out the video “Design Live Activities for Apple Watch”. </span></span><span class="sentence"><span data-start="598.0">For those of you who haven’t developed for watchOS before, </span></span><span class="sentence"><span data-start="602.0">Live Activities may be your first foray into customizing your app content </span></span><span class="sentence"><span data-start="606.0">for watchOS. </span></span><span class="sentence"><span data-start="608.0">We’re so happy to have you join us on this platform </span></span><span class="sentence"><span data-start="612.0">and we hope you’ll explore further to bring your apps to Apple Watch. </span></span><span class="sentence"><span data-start="617.0">Thank you.</span></span></p>
+							</section>
+						</li>
+
+						<!-- sample code -->
+						<li class="supplement sample-code" data-supplement-id="sample-code">
+							<section>
+								<ul class="no-bullet padding-top-small margin-bottom">
+																													<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>1:28 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=88" data-start-time="88">Existing Live Activity views</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">struct</span> <span class="syntax-title class_">DeliveryLiveActivity</span>: <span class="syntax-title class_">Widget</span> {
+    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">WidgetConfiguration</span> {
+        <span class="syntax-type">ActivityConfiguration</span>(
+            for: <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-keyword">self</span>
+        ) { context <span class="syntax-keyword">in</span>
+            <span class="syntax-type">DeliveryActivityContent</span>(context: context)
+        } dynamicIsland: { context <span class="syntax-keyword">in</span>
+            <span class="syntax-type">DynamicIsland</span> {
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.leading) {
+                    <span class="syntax-type">DeliveryExpandedLeadingView</span>(context: context)
+                }
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.trailing) {
+                    <span class="syntax-type">DeliveryExpandedTrailingView</span>(context: context)
+                }
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.bottom) {
+                    <span class="syntax-type">DeliveryExpandedBottomView</span>(context: context)
+                }
+            } compactLeading: {
+                <span class="syntax-type">DeliveryCompactLeading</span>(context: context)
+            } compactTrailing: {
+                <span class="syntax-type">DeliveryCompactTrailing</span>(context: context)
+            } minimal: {
+                <span class="syntax-type">DeliveryMinimal</span>(context: context)
+            }
+        }
+    }
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>3:43 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=223" data-start-time="223">Preview Live Activities with Xcode Previews</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">extension</span> <span class="syntax-title class_">DeliveryActivityAttributes</span>.<span class="syntax-title class_">ContentState</span> {
+    <span class="syntax-keyword">static</span> <span class="syntax-keyword">var</span> shippedOrder: <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span> {
+        .<span class="syntax-keyword">init</span>(
+            status: .shipped,
+            courierName: <span class="syntax-string">&quot;Johnny&quot;</span>
+        )
+     }
+
+     <span class="syntax-keyword">static</span> <span class="syntax-keyword">var</span> packedOrder: <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span> {
+         .<span class="syntax-keyword">init</span>(
+            status: .packed,
+            courierName: <span class="syntax-string">&quot;Contacting Courier...&quot;</span>)
+     }
+}
+
+#<span class="syntax-type">Preview</span>(
+    <span class="syntax-string">&quot;Dynamic Island Compact&quot;</span>,
+    as: .dynamicIsland(.compact),
+    using: <span class="syntax-type">DeliveryActivityAttributes</span>.preview
+) {
+    <span class="syntax-type">DeliveryLiveActivity</span>()
+} contentStates: {
+    <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span>.packedOrder
+    <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span>.shippedOrder
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>4:15 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=255" data-start-time="255">Add .supplementalActivityFamilies to indicate support for the Smart Stack</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">struct</span> <span class="syntax-title class_">DeliveryLiveActivity</span>: <span class="syntax-title class_">Widget</span> {
+    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">WidgetConfiguration</span> {
+        <span class="syntax-type">ActivityConfiguration</span>(
+            for: <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-keyword">self</span>
+        ) { context <span class="syntax-keyword">in</span>
+            <span class="syntax-type">DeliveryActivityContent</span>(context: context)
+        } dynamicIsland: { context <span class="syntax-keyword">in</span>
+            <span class="syntax-type">DynamicIsland</span> {
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.leading) {
+                    <span class="syntax-type">DeliveryExpandedLeadingView</span>(context: context)
+                }
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.trailing) {
+                    <span class="syntax-type">DeliveryExpandedTrailingView</span>(context: context)
+                }
+                <span class="syntax-type">DynamicIslandExpandedRegion</span>(.bottom) {
+                    <span class="syntax-type">DeliveryExpandedBottomView</span>(context: context)
+                }
+            } compactLeading: {
+                <span class="syntax-type">DeliveryCompactLeading</span>(context: context)
+            } compactTrailing: {
+                <span class="syntax-type">DeliveryCompactTrailing</span>(context: context)
+            } minimal: {
+                <span class="syntax-type">DeliveryMinimal</span>(context: context)
+            }
+        }
+        .supplementalActivityFamilies([.small])
+    }
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>4:49 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=289" data-start-time="289">Customize view layout for the small activity family</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">struct</span> <span class="syntax-title class_">DeliveryActivityContent</span>: <span class="syntax-title class_">View</span> {
+    <span class="syntax-meta">@Environment</span>(\.activityFamily) <span class="syntax-keyword">var</span> activityFamily
+    <span class="syntax-keyword">var</span> context: <span class="syntax-type">ActivityViewContext</span>&lt;<span class="syntax-type">DeliveryActivityAttributes</span>&gt;
+
+    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">View</span> {
+        <span class="syntax-keyword">switch</span> activityFamily {
+        <span class="syntax-keyword">case</span> .small:
+            <span class="syntax-type">DeliverySmallContent</span>(context: context)
+        <span class="syntax-keyword">case</span> .medium:
+            <span class="syntax-type">DeliveryMediumContent</span>(context: context)
+        <span class="syntax-keyword">@unknown</span> <span class="syntax-keyword">default</span>:
+            <span class="syntax-type">DeliveryMediumContent</span>(context: context)
+        }
+    }
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>5:06 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=306" data-start-time="306">Preview customized layouts for the Smart Stack</a></p>
+										<pre class="code-source"><code>#<span class="syntax-type">Preview</span>(<span class="syntax-string">&quot;Content&quot;</span>, as: .content, using: <span class="syntax-type">DeliveryActivityAttributes</span>.preview) {
+   <span class="syntax-type">DeliveryLiveActivity</span>()
+} contentStates: {
+    <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span>.packedOrder
+    <span class="syntax-type">DeliveryActivityAttributes</span>.<span class="syntax-type">ContentState</span>.shippedOrder
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>8:37 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=517" data-start-time="517">Use isLuminanceReduced to remove bright elements with Always On Display</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">struct</span> <span class="syntax-title class_">DeliveryGauge</span>: <span class="syntax-title class_">View</span> {
+    <span class="syntax-meta">@Environment</span>(\.isLuminanceReduced) <span class="syntax-keyword">private</span> <span class="syntax-keyword">var</span> isLuminanceReduced
+    <span class="syntax-keyword">var</span> context: <span class="syntax-type">ActivityViewContext</span>&lt;<span class="syntax-type">DeliveryActivityAttributes</span>&gt;
+
+    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">View</span> {
+        <span class="syntax-type">Gauge</span>(value: context.state.progressPercent) {
+            <span class="syntax-type">GaugeLabel</span>(context: context)
+        }
+        .tint(isLuminanceReduced <span class="syntax-operator">?</span> .gaugeDim : .gauge)
+    }
+}</code></pre>
+										</li>
+																				<li class="sample-code-main-container">
+											<button class="btn-copy-code" data-text-copied="Code Copied" data-text-default="Copy Code">Copy Code</button>
+											<p>8:57 - <a class="jump-to-time-sample" href="/videos/play/wwdc2024/10068/?time=537" data-start-time="537">For Live Activities with a light appearance, use a light preferredColorScheme</a></p>
+										<pre class="code-source"><code><span class="syntax-keyword">struct</span> <span class="syntax-title class_">DeliveryActivityContent</span>: <span class="syntax-title class_">View</span> {
+    <span class="syntax-meta">@Environment</span>(\.activityFamily) <span class="syntax-keyword">var</span> activityFamily
+    <span class="syntax-keyword">var</span> context: <span class="syntax-type">ActivityViewContext</span>&lt;<span class="syntax-type">DeliveryActivityAttributes</span>&gt;
+
+    <span class="syntax-keyword">var</span> body: <span class="syntax-keyword">some</span> <span class="syntax-type">View</span> {
+        <span class="syntax-keyword">switch</span> activityFamily {
+        <span class="syntax-keyword">case</span> .small:
+            <span class="syntax-type">DeliverySmallContent</span>(context: context)
+                .preferredColorScheme(.light)
+        <span class="syntax-keyword">case</span> .medium:
+            <span class="syntax-type">DeliveryMediumContent</span>(context: context)
+        <span class="syntax-keyword">@unknown</span> <span class="syntax-keyword">default</span>:
+            <span class="syntax-type">DeliveryMediumContent</span>(context: context)
+        }
+    }
+}</code></pre>
+										</li>
+																			
+								</ul>
+							</section>
+						</li>
+
+						
+					</ul>
+
+				</section>
+
+			</section>
+			</div>
+
+		</section>
+
+		<input id="analytics-meta" type="hidden" data-event-name="WWDC24" 
+		data-event-id="wwdc2024-10068" 
+		data-session-id="10068" 
+		data-video-name="Bring your Live Activity to Apple Watch" 
+		data-session-response-id="">
+	</main>
+
+	<link rel="stylesheet" href="/assets/styles/footer.dist.css?54232608030">
+<footer id="footer" class="footer" role="contentinfo" aria-labelledby="footer-label">
+    <div class="footer-content">
+        <h2 class="footer-label" id="footer-label">Developer Footer</h2>
+		
+		<developer-breadcrumbs>
+			<li class="footer-breadcrumbs-item"><a href="/videos/">Videos</a></li>
+				<li class="footer-breadcrumbs-item"><a href="/videos/wwdc2024/">WWDC24</a></li>				<li class="footer-breadcrumbs-item">Bring your Live Activity to Apple Watch</li>
+			
+		</developer-breadcrumbs>
+	        <nav class="footer-directory" aria-label="Apple Developer Directory" role="navigation">
+	<!--googleoff: all-->
+	<div class="footer-directory-column">
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-platform" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-platform">
+				<h3 class="footer-directory-column-section-title">Platforms</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-platform" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/ios/">iOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/ipados/">iPadOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/macos/">macOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/tvos/">tvOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/visionos/">visionOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/watchos/">watchOS</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/app-store/">App Store</a></li>
+			</ul>
+		</div>
+
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-tools" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-tools">
+				<h3 class="footer-directory-column-section-title">Tools</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-tools" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/swift/">Swift</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/swiftui/">SwiftUI</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/swift-playground/">Swift Playground</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/testflight/">TestFlight</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/xcode/">Xcode</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/xcode-cloud/">Xcode Cloud</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/icon-composer/">Icon Composer</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/sf-symbols/">SF Symbols</a></li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class="footer-directory-column">
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-topics" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-topics">
+				<h3 class="footer-directory-column-section-title">Technologies</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-topics" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/accessibility/">Accessibility</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/accessories/">Accessories</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/apple-intelligence/">Apple Intelligence</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/audio/">Audio &amp; Video</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/augmented-reality/">Augmented Reality</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/business/">Business</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/design/">Design</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/distribute/">Distribution</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/education/">Education</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/games/">Games</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/health-fitness/">Health &amp; Fitness</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/in-app-purchase/">In-App Purchase</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/localization/">Localization</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/maps/">Maps &amp; Location</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/machine-learning/">Machine Learning & AI</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/security/">Security</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/safari/">Safari &amp; Web</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="footer-directory-column">
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-resources" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-resources">
+				<h3 class="footer-directory-column-section-title">Resources</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-resources" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/documentation/">Documentation</a></li>
+<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/download/">Downloads</a></li>
+		<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/documentation/samplecode">Sample Code</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/videos/">Videos</a></li>
+			</ul>
+		</div>
+
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-support" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-support">
+				<h3 class="footer-directory-column-section-title">Support</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-support" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/help/">Help Guides & Articles</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/contact/">Contact Us</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/forums/">Forums</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/bug-reporting/">Feedback & Bug Reporting</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/system-status/">System Status</a></li>
+			</ul>
+		</div>
+
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-account" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-account">
+				<h3 class="footer-directory-column-section-title">Account</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-account" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/account/">Apple Developer</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="https://appstoreconnect.apple.com/">App Store Connect</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/account/ios/certificate/">Certificates, IDs, &amp; Profiles</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="https://feedbackassistant.apple.com/">Feedback Assistant</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="footer-directory-column">
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-programs" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-programs">
+				<h3 class="footer-directory-column-section-title">Programs</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-programs" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/">Apple Developer Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/enterprise/">Apple Developer Enterprise Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/app-store/small-business-program/">App Store Small Business Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="https://mfi.apple.com/">MFi Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/mini-apps-partner/">Mini Apps Partner Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/news-partner/">News Partner Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/video-partner/">Video Partner Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/security-bounty/">Security Bounty Program</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/programs/security-research-device/">Security Research Device Program</a></li>
+			</ul>
+		</div>
+
+		<input class="footer-directory-column-section-state" type="checkbox" id="footer-directory-column-section-state-events" />
+		<div class="footer-directory-column-section">
+			<label class="footer-directory-column-section-label" for="footer-directory-column-section-state-events">
+				<h3 class="footer-directory-column-section-title">Events</h3>
+			</label>
+			<a href="#footer-directory-column-section-state-events" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-open"> <span class="footer-directory-column-section-anchor-label">Open Menu</span> </a>
+			<a href="#" class="footer-directory-column-section-anchor footer-directory-column-section-anchor-close"> <span class="footer-directory-column-section-anchor-label">Close Menu</span> </a>
+			<ul class="footer-directory-column-section-list">
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/events/">Meet with Apple</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/events/developer-centers/">Apple Developer Centers</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/app-store/app-store-awards/">App Store Awards</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/design/awards/">Apple Design Awards</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/academies/">Apple Developer Academies</a></li>
+				<li class="footer-directory-column-section-item"><a class="footer-directory-column-section-link" href="/wwdc/">WWDC</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--googleon: all-->
+</nav>
+        <section class="footer-mini" vocab="http://schema.org/" typeof="Organization">
+	<div class="footer-mini-news">
+		<div class="copy">
+			Read the <a class="footer-mini-legal-link" href="/news/">latest news</a> Get the <a href="https://apps.apple.com/us/app/apple-developer/id640199958">Apple Developer app</a>.
+		</div>
+		<div class="content">
+			<div class="color-scheme-toggle"
+				role="radiogroup"
+				tabindex="0"
+				aria-label="Select a color scheme preference">
+
+				<label data-color-scheme-option="light">
+
+					<input type="radio" value="light" autocomplete="off"
+						onchange="window.setPreferredColorScheme(event.target.value)" />
+
+					<div class="text">Light</div>
+
+				</label>
+
+				<label data-color-scheme-option="dark">
+
+					<input type="radio" value="dark" autocomplete="off"
+						onchange="window.setPreferredColorScheme(event.target.value)" />
+
+					<div class="text">Dark</div>
+
+				</label>
+
+				<label data-color-scheme-option="auto">
+
+					<input type="radio" value="auto" autocomplete="off"
+						onchange="window.setPreferredColorScheme(event.target.value)" />
+
+					<div class="text">Auto</div>
+
+				</label>
+
+			</div>
+			<script async src="/assets/scripts/color-scheme-toggle.js"></script>
+		</div>
+	</div>
+	<link rel="stylesheet" href="/assets/styles/language-dropdown.css?54232608030">
+	<div class="language-dropdown dropdown-container legacy-form hidden">
+		<select class="dropdown" aria-label="Language Dropdown"></select>
+		<span class="dropdown-icon icon icon-chevrondown" aria-hidden="true"></span>
+	</div>
+	<script src="/assets/scripts/language-dropdown.js?45232608030"></script>
+	<div class="footer-mini-legal">
+		<div class="footer-mini-legal-copyright">Copyright ©  2026 <a href="https://www.apple.com">Apple Inc.</a> All rights reserved.</div>
+		<div class="footer-mini-legal-links">
+			<a class="footer-mini-legal-link" href="https://www.apple.com/legal/internet-services/terms/site.html" class="first">Terms of Use</a>
+			<a class="footer-mini-legal-link" href="https://www.apple.com/legal/privacy/">Privacy Policy</a>
+			<a class="footer-mini-legal-link" href="/support/terms/">Agreements and Guidelines</a>
+		</div>
+	</div>
+</section>
+    </div>
+</footer>
+
+	<script src="/videos/scripts/collection/form-input.js?7"></script>
+	<script src="/assets/scripts/params.js"></script>
+	<script src="/assets/scripts/watchable.js"></script>
+	<script src="/assets/scripts/timeout.js"></script>
+	
+	<script src="/videos/scripts/play/play.js?49002609080"></script>
+	<script src="/videos/scripts/hls/rtc.min.js?17232610030"></script>
+	<script src="/videos/scripts/hls/hls.min.js?17232610030"></script>
+	
+</body>
+</html>
+
