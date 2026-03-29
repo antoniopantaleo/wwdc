@@ -232,3 +232,44 @@ func TestMarkdownExportPathHappyPathMultipleEvents(t *testing.T) {
 		t.Fatalf("expected data to be %s, got %s", expectedData4, writtenData[3])
 	}
 }
+
+func TestMarkdownExportOneEventNoVideos(t *testing.T) {
+	var (
+		writtenDirectory string
+		writtenFilePaths  []string
+		writtenData      [][]byte
+	)
+	fs := mockFileSystem{
+		makeDirFunc: func(path string) error {
+			writtenDirectory = path
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			writtenFilePaths = append(writtenFilePaths, path)
+			writtenData = append(writtenData, data)
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  2024,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{},
+		},
+	}
+	sut := NewMarkdownExporter(&fs)
+	err := sut.Export(events)
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
+	if writtenDirectory != "WWDC24" {
+		t.Fatalf("expected directory to be %s, got %s", "WWDC24", writtenDirectory)
+	}
+	if len(writtenFilePaths) != 0 {
+		t.Fatalf("expected no file to be written, but got %d files", len(writtenFilePaths))
+	}
+	if len(writtenData) != 0 {
+		t.Fatalf("expected no data to be written, but got %d data entries", len(writtenData))
+	}
+}
