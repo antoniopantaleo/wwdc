@@ -1,6 +1,7 @@
 package exporter
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/antoniopantaleo/wwdc/internal/domain"
@@ -333,5 +334,33 @@ func TestMarkdownExportInvalidYear(t *testing.T) {
 	expectedErrorMessage := "Unable to build year"
 	if err.Error() != expectedErrorMessage {
 		t.Fatalf("expected error message to be %s, got %s", expectedErrorMessage, err.Error())
+	}
+}
+
+func TestMarkdownExportMakeDirError(t *testing.T) {
+	errMakeDir := errors.New("some error creating directory")
+	fs := mockFileSystem{
+		makeDirFunc: func(path string) error {
+			return errMakeDir
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  2024,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{},
+		},
+	}
+	sut := NewMarkdownExporter(&fs)
+	err := sut.Export(events)
+	if err == nil {
+		t.Fatal("expected an error, got nil")
+	}
+	if !errors.Is(err, errMakeDir) {
+		t.Fatalf("expected error to be %v, got %v", errMakeDir, err)
 	}
 }
