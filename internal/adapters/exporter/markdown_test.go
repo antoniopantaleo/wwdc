@@ -307,3 +307,31 @@ func TestMarkdownExportNoEvents(t *testing.T) {
 		t.Fatalf("expected no data to be written, but got %d data entries", len(writtenData))
 	}
 }
+
+func TestMarkdownExportInvalidYear(t *testing.T) {
+	fs := mockFileSystem{
+		makeDirFunc: func(path string) error {
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  1999,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{},
+		},
+	}
+	sut := NewMarkdownExporter(&fs)
+	err := sut.Export(events)
+	if err == nil {
+		t.Fatal("expected an error, got nil")
+	}
+	expectedErrorMessage := "Unable to build year"
+	if err.Error() != expectedErrorMessage {
+		t.Fatalf("expected error message to be %s, got %s", expectedErrorMessage, err.Error())
+	}
+}
