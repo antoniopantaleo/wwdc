@@ -4,6 +4,7 @@ import (
 	"errors"
 	"strconv"
 	"strings"
+	"path/filepath"
 
 	"github.com/antoniopantaleo/wwdc/internal/domain"
 )
@@ -28,7 +29,8 @@ func (m *MarkdownExporter) Export(events []domain.WWDCEvent) error {
 			return err
 		}
 		for _, video := range event.Videos {
-			path := "WWDC" + year + "/" + video.Title + ".md"
+			sanitizedTitle := strings.ReplaceAll(video.Title, "/", "_")
+			path := filepath.Join("WWDC" + year, sanitizedTitle + ".md")
 			content := ""
 			if !m.omitTitle {
 				content = content + "# " + video.Title + "\n\n"

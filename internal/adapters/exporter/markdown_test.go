@@ -434,3 +434,38 @@ func TestMarkdownExportOmittingTitle(t *testing.T) {
 		t.Fatalf("wrong data, expected %v, got %v", string(expectedData), string(contentWritten))
 	}
 }
+
+func TestMarkdownExportSanitizePath(t *testing.T) {
+	var createdPath string
+	fs := &mockFileSystem{
+		makeDirFunc: func(path string) error {
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			createdPath = path
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  2024,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{
+				{
+					Title:    "Session 1 about Swift/Objective-C",
+					VideoURL: "https://example.com/session1.mp4",
+					Content:  "This is the content of session 1.",
+				},
+			},
+		},
+	}
+	sut := NewMarkdownExporter(fs, false)
+	err := sut.Export(events)
+	if err != nil {
+		t.Fatalf("expected no error got %v instead", err)
+	}
+	if createdPath != "WWDC24/Session 1 about Swift_Objective-C.md" {
+		t.Fatalf("wrong path created. expected WWDC24/Session 1 about Swift_Objective-C.md, got %v instead", createdPath)
+	}
+}
