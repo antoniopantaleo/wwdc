@@ -2,6 +2,7 @@ package scraper
 
 import (
 	"log"
+	"net/http"
 	"regexp"
 	"strconv"
 	"sync"
@@ -23,15 +24,25 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 	eventsMap := make(map[string]*domain.WWDCEvent)
 	eventsScraper := colly.NewCollector()
 
+	transport := &http.Transport{
+		MaxIdleConns:        100,
+		MaxIdleConnsPerHost: 50,
+		MaxConnsPerHost:     50,
+	}
+
 	singleVideoScraper := colly.NewCollector(
 		colly.Async(true),
+		colly.AllowURLRevisit(),
 	)
-	singleVideoScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 2})
+	singleVideoScraper.WithTransport(transport)
+	singleVideoScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 20})
 	videosScraper := colly.NewCollector(
 		colly.Async(true),
+		colly.AllowURLRevisit(),
 	)
-	videosScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 2})
 	log.Println("Visiting", s.baseURL)
+	videosScraper.WithTransport(transport)
+	videosScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 20})
 
 	re := regexp.MustCompile(`wwdc(\d{4})`)
 	eventsScraper.OnHTML("a[href^=\"/videos/wwdc\"].vc-card", func(h *colly.HTMLElement) {
