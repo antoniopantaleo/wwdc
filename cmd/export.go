@@ -31,7 +31,7 @@ func NewExportCommand(d *dependencies) *cobra.Command {
 			var exp domain.WWDCExporter
 			switch format {
 			case "json":
-				exp = exporter.NewJSONExporter(cmd.OutOrStdout())
+				exp = exporter.NewJSONExporter(cmd.OutOrStdout(), omitTitle)
 			case "markdown", "md":
 				fs := d.FileSystem
 				exp = exporter.NewMarkdownExporter(fs, omitTitle)
