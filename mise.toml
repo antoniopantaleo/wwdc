@@ -19,24 +19,21 @@ description = "Show current version"
 run = "cat VERSION"
 
 [tasks.version]
-description = "Bump version, generate changelog, commit and tag (usage: mise run version [major|minor|patch])"
+description = "Bump version based on conventional commits, generate changelog, commit and tag"
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
 
 CURRENT=$(cat VERSION)
-IFS='.' read -r major minor patch <<< "$CURRENT"
+NEW=$(git-cliff --bumped-version | sed 's/^v//')
 
-case "${1:-patch}" in
-  major) major=$((major + 1)); minor=0; patch=0 ;;
-  minor) minor=$((minor + 1)); patch=0 ;;
-  patch) patch=$((patch + 1)) ;;
-  *) echo "Usage: mise run version [major|minor|patch]"; exit 1 ;;
-esac
+if [ "$NEW" = "$CURRENT" ]; then
+  echo "No version bump needed (still $CURRENT)"
+  exit 0
+fi
 
-NEW="$major.$minor.$patch"
 echo -n "$NEW" > VERSION
-git-cliff --tag "v$NEW" -o CHANGELOG.md
+git-cliff --bump -o CHANGELOG.md
 git add VERSION CHANGELOG.md
 git commit -m "chore: bump version to $NEW"
 git tag "v$NEW"
