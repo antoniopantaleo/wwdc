@@ -51,7 +51,7 @@ func TestMarkdownExportHappyPathOneEventOneVideo(t *testing.T) {
 			},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -105,7 +105,7 @@ func TestMarkdownExportHappyPathOneEventMultipleVideos(t *testing.T) {
 			},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -186,7 +186,7 @@ func TestMarkdownExportPathHappyPathMultipleEvents(t *testing.T) {
 			},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -259,7 +259,7 @@ func TestMarkdownExportOneEventNoVideos(t *testing.T) {
 			Videos: []domain.WWDCVideo{},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -293,7 +293,7 @@ func TestMarkdownExportNoEvents(t *testing.T) {
 		},
 	}
 	events := []domain.WWDCEvent{}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)
@@ -326,7 +326,7 @@ func TestMarkdownExportInvalidYear(t *testing.T) {
 			Videos: []domain.WWDCVideo{},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err == nil {
 		t.Fatal("expected an error, got nil")
@@ -355,7 +355,7 @@ func TestMarkdownExportMakeDirError(t *testing.T) {
 			Videos: []domain.WWDCVideo{},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err == nil {
 		t.Fatal("expected an error, got nil")
@@ -389,12 +389,48 @@ func TestMarkdownExportWriteFileError(t *testing.T) {
 			},
 		},
 	}
-	sut := NewMarkdownExporter(&fs)
+	sut := NewMarkdownExporter(&fs, false)
 	err := sut.Export(events)
 	if err == nil {
 		t.Fatal("expected an error, got nil")
 	}
 	if !errors.Is(err, errWriteFile) {
 		t.Fatalf("expected error to be %v, got %v", errWriteFile, err)
+	}
+}
+
+func TestMarkdownExportOmittingTitle(t *testing.T) {
+	var contentWritten []byte
+	fs := &mockFileSystem{
+		makeDirFunc: func(path string) error {
+			return nil
+		},
+		writeFileFunc: func(path string, data []byte) error {
+			contentWritten = data
+			return nil
+		},
+	}
+	events := []domain.WWDCEvent{
+		{
+			Title: "WWDC24",
+			Year:  2024,
+			CoverURL: "https://example.com/wwdc24.jpg",
+			Videos: []domain.WWDCVideo{
+				{
+					Title:    "Session 1",
+					VideoURL: "https://example.com/session1.mp4",
+					Content:  "This is the content of session 1.",
+				},
+			},
+		},
+	}
+	sut := NewMarkdownExporter(fs, true)
+	err := sut.Export(events)
+	if err != nil {
+		t.Fatalf("expected no error, got %v instead", err)
+	}
+	expectedData := []byte("<video controls src=\"https://example.com/session1.mp4\"></video>\n\nThis is the content of session 1.")
+	if string(contentWritten) != string(expectedData) {
+		t.Fatalf("wrong data, expected %v, got %v", string(expectedData), string(contentWritten))
 	}
 }

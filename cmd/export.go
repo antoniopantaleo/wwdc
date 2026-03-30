@@ -13,6 +13,7 @@ import (
 
 func NewExportCommand() *cobra.Command {
 	var format string
+	var omitTitle bool
 	cmd := &cobra.Command{
 		Use: "export",
 		Short: "Scrape and export WWDC session videos",
@@ -73,7 +74,7 @@ func NewExportCommand() *cobra.Command {
 				exp = exporter.NewJSONExporter(cmd.OutOrStdout())
 			case "markdown", "md":
 				fs := filesystem.NewOSFileSystem("./WWDC")
-				exp = exporter.NewMarkdownExporter(fs)
+				exp = exporter.NewMarkdownExporter(fs, omitTitle)
 			default:
 				return fmt.Errorf("unsupported format: %s", format)
 			}
@@ -81,7 +82,9 @@ func NewExportCommand() *cobra.Command {
 			return usecase.Execute()
 		},
 	}
-	cmd.Flags().StringVarP(&format, "format", "f", "", "Export format")
+	cmd.Flags().StringVarP(&format, "format", "f", "", "Export format. Currently supported formats are: json, markdown (or md).")
 	cmd.MarkFlagRequired("format")
+
+	cmd.Flags().BoolVar(&omitTitle, "omit-title", false, "Do not write title")
 	return cmd
 }

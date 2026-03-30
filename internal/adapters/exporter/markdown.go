@@ -10,10 +10,11 @@ import (
 
 type MarkdownExporter struct {
 	fs domain.FileSystem
+	omitTitle bool
 }
 
-func NewMarkdownExporter(fs domain.FileSystem) *MarkdownExporter {
-	return &MarkdownExporter{fs: fs}
+func NewMarkdownExporter(fs domain.FileSystem, omitTitle bool) *MarkdownExporter {
+	return &MarkdownExporter{fs: fs, omitTitle: omitTitle}
 }
 
 func (m *MarkdownExporter) Export(events []domain.WWDCEvent) error {
@@ -28,7 +29,11 @@ func (m *MarkdownExporter) Export(events []domain.WWDCEvent) error {
 		}
 		for _, video := range event.Videos {
 			path := "WWDC" + year + "/" + video.Title + ".md"
-			content := "# " + video.Title + "\n\n" + "<video controls src=\"" + video.VideoURL + "\"></video>\n\n" + video.Content
+			content := ""
+			if !m.omitTitle {
+				content = content + "# " + video.Title + "\n\n"
+			}
+			content = content + "<video controls src=\"" + video.VideoURL + "\"></video>\n\n" + video.Content
 			data := []byte(content)
 			err := m.fs.WriteFile(path, data)
 			if err != nil {

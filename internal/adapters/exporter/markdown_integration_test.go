@@ -11,7 +11,7 @@ import (
 func TestMarkdownExporterOSFileSystemWritesFoldersAndFiles(t *testing.T) {
 	base := t.TempDir()
 	fs := filesystem.NewOSFileSystem(base)
-	sut := NewMarkdownExporter(fs)
+	sut := NewMarkdownExporter(fs, false)
 	events := []domain.WWDCEvent{
 		{
 			Title:    "WWDC24",
