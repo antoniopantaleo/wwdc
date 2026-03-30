@@ -2,9 +2,13 @@
 go = "1.25.6"
 git-cliff = "2.12.0"
 
-[tasks.build]
-description = "Build with version injection"
+[tasks."build:prod"]
+description = "Production build with version injection"
 run = 'go build -ldflags "-X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)" -o wwdc .'
+
+[tasks."build:dev"]
+description = "Development build with version injection"
+run = 'go build -tags dev -ldflags "-X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)-dev" -o wwdc .'
 
 [tasks.test]
 description = "Run all tests"
