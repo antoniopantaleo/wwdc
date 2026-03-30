@@ -15,7 +15,7 @@ type JSONWWDCEvent struct {
 }
 
 type JSONWWDCVideo struct {
-	Title    string `json:"title,omitempty"`
+	Title    string `json:"title"`
 	VideoURL string `json:"videoUrl"`
 	Content  string `json:"content"`
 }
@@ -26,17 +26,16 @@ type jsonExportData struct {
 
 type JSONExporter struct {
 	writer io.Writer
-	omitTitle bool
 }
 
-func NewJSONExporter(writer io.Writer, omitTitle bool) *JSONExporter {
-	return &JSONExporter{writer: writer, omitTitle: omitTitle}
+func NewJSONExporter(writer io.Writer) *JSONExporter {
+	return &JSONExporter{writer: writer}
 }
 
 func (e *JSONExporter) Export(events []domain.WWDCEvent) error {
 	jsonEvents := make([]JSONWWDCEvent, len(events))
 	for i, event := range events {
-		jsonEvents[i] = convertToJSONWWDCEvent(event, e.omitTitle)
+		jsonEvents[i] = convertToJSONWWDCEvent(event)
 	}
 	exportData := jsonExportData{
 		Events: jsonEvents,
@@ -49,10 +48,10 @@ func (e *JSONExporter) Export(events []domain.WWDCEvent) error {
 	return nil
 }
 
-func convertToJSONWWDCEvent(event domain.WWDCEvent, omitTitle bool) JSONWWDCEvent {
+func convertToJSONWWDCEvent(event domain.WWDCEvent) JSONWWDCEvent {
 	jsonVideos := make([]JSONWWDCVideo, len(event.Videos))
 	for i, video := range event.Videos {
-		jsonVideos[i] = convertToJSONWWDCVideo(video, omitTitle)
+		jsonVideos[i] = convertToJSONWWDCVideo(video)
 	}
 	return JSONWWDCEvent{
 		Title:    event.Title,
@@ -62,13 +61,9 @@ func convertToJSONWWDCEvent(event domain.WWDCEvent, omitTitle bool) JSONWWDCEven
 	}
 }
 
-func convertToJSONWWDCVideo(video domain.WWDCVideo, omitTitle bool) JSONWWDCVideo {
-	title := video.Title
-	if omitTitle {
-		title = ""
-	}
+func convertToJSONWWDCVideo(video domain.WWDCVideo) JSONWWDCVideo {
 	return JSONWWDCVideo{
-		Title:    title,
+		Title:    video.Title,
 		VideoURL: video.VideoURL,
 		Content:  video.Content,
 	}
