@@ -68,8 +68,8 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 		singleVideoScraper.Request("GET", videoURL, nil, ctx, nil)
 	})
 
-	singleVideoScraper.OnHTML("video", func(h *colly.HTMLElement) {
-		videoURL := h.Attr("src")
+	singleVideoScraper.OnHTML("li.download li:first-child", func(h *colly.HTMLElement) {
+		videoURL := h.ChildAttr("li a", "href")
 		h.Request.Ctx.Put("videoURL", videoURL)
 		log.Printf("Found video URL: %s\n", videoURL)
 	})
