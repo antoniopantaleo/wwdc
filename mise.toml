@@ -1,0 +1,44 @@
+[tools]
+go = "1.25.6"
+git-cliff = "2.12.0"
+
+[tasks.build]
+description = "Build with version injection"
+run = 'go build -ldflags "-X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)" -o wwdc .'
+
+[tasks.test]
+description = "Run all tests"
+run = "go test ./..."
+
+[tasks.changelog]
+description = "Generate changelog"
+run = "git-cliff -o CHANGELOG.md"
+
+[tasks."version:current"]
+description = "Show current version"
+run = "cat VERSION"
+
+[tasks.version]
+description = "Bump version, generate changelog, commit and tag (usage: mise run version [major|minor|patch])"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+
+CURRENT=$(cat VERSION)
+IFS='.' read -r major minor patch <<< "$CURRENT"
+
+case "${1:-patch}" in
+  major) major=$((major + 1)); minor=0; patch=0 ;;
+  minor) minor=$((minor + 1)); patch=0 ;;
+  patch) patch=$((patch + 1)) ;;
+  *) echo "Usage: mise run version [major|minor|patch]"; exit 1 ;;
+esac
+
+NEW="$major.$minor.$patch"
+echo -n "$NEW" > VERSION
+git-cliff --tag "v$NEW" -o CHANGELOG.md
+git add VERSION CHANGELOG.md
+git commit -m "chore: bump version to $NEW"
+git tag "v$NEW"
+echo "Released: $CURRENT -> $NEW (tagged v$NEW)"
+"""

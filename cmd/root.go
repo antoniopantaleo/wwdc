@@ -10,9 +10,11 @@ type dependencies struct {
 	Scraper domain.WWDCScraper
 }
 
+var version = "dev"
+
 func NewRootCommand() *cobra.Command {
 	cmd := &cobra.Command{
-		Version: "0.1.0",
+		Version: version,
 		Use: "wwdc",
 		Short: "A CLI tool to scrape and export WWDC session videos",
 	}
