@@ -1,6 +1,7 @@
 package scraper
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"regexp"
@@ -13,10 +14,14 @@ import (
 
 type CollyScraper struct {
 	baseURL string
+	logger  *log.Logger
 }
 
-func NewCollyScraper(baseURL string) *CollyScraper {
-	return &CollyScraper{baseURL: baseURL}
+func NewCollyScraper(baseURL string, logger *log.Logger) *CollyScraper {
+	if logger == nil {
+		logger = log.New(io.Discard, "", 0)
+	}
+	return &CollyScraper{baseURL: baseURL, logger: logger}
 }
 
 func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
@@ -40,9 +45,9 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 		colly.Async(true),
 		colly.AllowURLRevisit(),
 	)
-	log.Println("Visiting", s.baseURL)
 	videosScraper.WithTransport(transport)
 	videosScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 20})
+	s.logger.Println("Visiting", s.baseURL)
 
 	re := regexp.MustCompile(`wwdc(\d{4})`)
 	eventsScraper.OnHTML("a[href^=\"/videos/wwdc\"].vc-card", func(h *colly.HTMLElement) {
@@ -55,7 +60,7 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 			year = matches[1]
 		}
 		intYear, _ := strconv.Atoi(year)
-		log.Printf("Found event: %s %s (%s) - %s\n", year, title, coverURL, eventURL)
+		s.logger.Printf("Found event: %s %s (%s) - %s\n", year, title, coverURL, eventURL)
 		event := &domain.WWDCEvent{
 			Title:    title,
 			Year:     intYear,
@@ -75,14 +80,14 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 	videosScraper.OnHTML("a[href^=\"/videos/play/wwdc\"].vc-card", func(h *colly.HTMLElement) {
 		videoURL := h.Request.AbsoluteURL(h.Attr("href"))
 		ctx := h.Request.Ctx
-		log.Printf("Found video page: %s\n", videoURL)
+		s.logger.Printf("Found video page: %s\n", videoURL)
 		singleVideoScraper.Request("GET", videoURL, nil, ctx, nil)
 	})
 
 	singleVideoScraper.OnHTML("li.download li:first-child", func(h *colly.HTMLElement) {
 		videoURL := h.ChildAttr("li a", "href")
 		h.Request.Ctx.Put("videoURL", videoURL)
-		log.Printf("Found video URL: %s\n", videoURL)
+		s.logger.Printf("Found video URL: %s\n", videoURL)
 	})
 
 	singleVideoScraper.OnHTML("li.supplement.details", func(h *colly.HTMLElement) {
@@ -91,7 +96,7 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 		ctx := h.Request.Ctx
 		ctx.Put("videoTitle", title)
 		ctx.Put("videoContent", content)
-		log.Printf("Found video details: %s - %s\n", title, content)
+		s.logger.Printf("Found video details: %s - %s\n", title, content)
 	})
 
 	singleVideoScraper.OnScraped(func(r *colly.Response) {
@@ -109,7 +114,7 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 			event.Videos = append(event.Videos, *video)
 		}
 		mu.Unlock()
-		log.Printf("%s, Finished scraping video page: %s\n", year, r.Request.URL)
+		s.logger.Printf("%s, Finished scraping video page: %s\n", year, r.Request.URL)
 	})
 
 	eventsScraper.Visit(s.baseURL + "/videos")

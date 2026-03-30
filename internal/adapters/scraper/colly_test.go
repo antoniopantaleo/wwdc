@@ -1,8 +1,10 @@
 package scraper
 
 import (
+	"log"
 	"net/http"
 	"net/http/httptest"
+	"os"
 	"testing"
 )
 
@@ -10,7 +12,8 @@ func TestCollyScraperEventsList(t *testing.T) {
 	ts := httptest.NewServer(http.FileServer(http.Dir("testdata")))
 	defer ts.Close()
 
-	scraper := NewCollyScraper(ts.URL)
+	logger := log.New(os.Stdout, "[COLLY TEST] ", log.LstdFlags)
+	scraper := NewCollyScraper(ts.URL, logger)
 	events, err := scraper.Scrape()
 	if err != nil {
 		t.Fatalf("expected no error, got %v", err)

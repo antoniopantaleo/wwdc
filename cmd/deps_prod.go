@@ -10,6 +10,6 @@ import (
 func createDependencies() *dependencies {
 	return &dependencies{
 		FileSystem: filesystem.NewOSFileSystem("./WWDC"),
-		Scraper: scraper.NewCollyScraper("https://developer.apple.com"),
+		Scraper: scraper.NewCollyScraper("https://developer.apple.com", nil),
 	}
 }
