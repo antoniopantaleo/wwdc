@@ -11,10 +11,7 @@ import (
 func NewExportCommand(d *dependencies) *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "export",
-		Short: "Scrape and export WWDC session videos",
-		Long: `
-  Scrape WWDC session videos from the Apple Developer website and export them in the specified format.
-`,
+		Short: "Scrape WWDC session videos from the Apple Developer website and export them in the specified format.",
 	}
 
 	cmd.AddCommand(newJSONExportCommand(d))
@@ -27,7 +24,8 @@ func newJSONExportCommand(d *dependencies) *cobra.Command {
 	var outputPath string
 	cmd := &cobra.Command{
 		Use: "json",
-		Short: "Short description",
+		Short: "Export events in JSON format.",
+		Long: "By default the JSON is printed out to standard output. Use `--output` option to save JSON on disk.",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			scraper := d.Scraper
 			writer := cmd.OutOrStdout()
@@ -53,7 +51,8 @@ func newMarkdownExportCommand(d *dependencies) *cobra.Command {
 	var omitTitle bool
 	cmd := &cobra.Command{
 		Use: "markdown",
-		Short: "Short description",
+		Short: "Export events in .md files, organized in folders, one per event.",
+		Long: "Some markdown editors/visualizers use the file name as the title. You can use `--omit-title` flag to ignore title heading in the resulting markdown files.",
 		Aliases: []string{"md"},
 		RunE: func(cmd *cobra.Command, args []string) error {
 			scraper := d.Scraper
