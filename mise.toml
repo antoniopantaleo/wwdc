@@ -4,7 +4,7 @@ git-cliff = "2.12.0"
 
 [tasks."build:prod"]
 description = "Production build with version injection"
-run = 'go build -ldflags "-X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)" -o wwdc .'
+run = 'go build -ldflags "-s -w -X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)" -o wwdc .'
 
 [tasks."build:dev"]
 description = "Development build with version injection"
