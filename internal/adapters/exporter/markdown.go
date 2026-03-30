@@ -28,7 +28,7 @@ func (m *MarkdownExporter) Export(events []domain.WWDCEvent) error {
 		}
 		for _, video := range event.Videos {
 			path := "WWDC" + year + "/" + video.Title + ".md"
-			content := "# " + video.Title + "\n\n" + "![Video](" + video.VideoURL + ")\n\n" + video.Content
+			content := "# " + video.Title + "\n\n" + "<video controls src=\"" + video.VideoURL + "\"></video>\n\n" + video.Content
 			data := []byte(content)
 			err := m.fs.WriteFile(path, data)
 			if err != nil {
