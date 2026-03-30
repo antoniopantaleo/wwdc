@@ -25,7 +25,7 @@ func newJSONExportCommand(d *dependencies) *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "json",
 		Short: "Export events in JSON format.",
-		Long: "By default the JSON is printed out to standard output. Use `--output` option to save JSON on disk.",
+		Long: "Export events in JSON format.\n\nBy default the JSON is printed out to standard output.\nUse `--output` option to save JSON on disk.",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			scraper := d.Scraper
 			writer := cmd.OutOrStdout()
@@ -52,7 +52,7 @@ func newMarkdownExportCommand(d *dependencies) *cobra.Command {
 	cmd := &cobra.Command{
 		Use: "markdown",
 		Short: "Export events in .md files, organized in folders, one per event.",
-		Long: "Some markdown editors/visualizers use the file name as the title. You can use `--omit-title` flag to ignore title heading in the resulting markdown files.",
+		Long: "Export events in .md files, organized in folders, one per event.\n\nSome markdown editors/visualizers use the file name as the title.\nYou can use `--omit-title` flag to ignore title heading in the resulting markdown files.",
 		Aliases: []string{"md"},
 		RunE: func(cmd *cobra.Command, args []string) error {
 			scraper := d.Scraper
