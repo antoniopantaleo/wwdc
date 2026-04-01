@@ -54,8 +54,7 @@ docker_manifests:
       - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-arm64"
 
 changelog:
-  use: git-cliff
-  sort: asc
+  disable: true
 
 brews:
   - repository:
