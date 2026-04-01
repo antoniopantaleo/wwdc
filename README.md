@@ -19,6 +19,18 @@
 
 ## Installation
 
+### Homebrew
+
+```bash
+brew install antoniopantaleo/homebrew-tap/wwdc
+```
+
+### Docker
+
+```bash
+docker pull ghcr.io/antoniopantaleo/wwdc:latest
+```
+
 ### Building from source
 
 Requires Go 1.25.6 or later.
@@ -38,12 +50,6 @@ git clone https://github.com/antoniopantaleo/wwdc.git
 cd wwdc
 mise trust && install
 mise run build:prod
-```
-
-### Docker
-
-```bash
-docker build -t wwdc -f Dockerfile .
 ```
 
 ## Usage
