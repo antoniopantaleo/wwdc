@@ -50,7 +50,9 @@ jobs:
 
       - name: Generate changelog
         if: steps.check_tag.outputs.exists == 'false'
-        run: git-cliff --latest --strip header > CHANGELOG.md
+        run: |
+          git-cliff > CHANGELOG.md
+          git-cliff --latest --strip header > /tmp/RELEASE_NOTES.md
 
       - name: Commit changelog
         if: steps.check_tag.outputs.exists == 'false'
@@ -76,7 +78,7 @@ jobs:
         uses: goreleaser/goreleaser-action@v6
         with:
           version: "~> v2"
-          args: release --clean --release-notes=CHANGELOG.md
+          args: release --clean --release-notes=/tmp/RELEASE_NOTES.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HOMEBREW_TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
