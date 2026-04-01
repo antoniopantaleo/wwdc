@@ -1,4 +1,13 @@
+## [0.1.5] - 2026-04-01
+
+### 📚 Documentation
+
+- Update README
 ## [0.1.4] - 2026-04-01
+
+### 📚 Documentation
+
+- Update changelog for v0.1.4
 
 ### ⚙️ Miscellaneous Tasks
 
