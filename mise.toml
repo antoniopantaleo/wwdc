@@ -1,0 +1,45 @@
+[tools]
+go = "1.25.6"
+git-cliff = "2.12.0"
+
+[tasks."build:prod"]
+description = "Production build with version injection"
+run = 'go build -ldflags "-s -w -X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)" -o wwdc .'
+
+[tasks."build:dev"]
+description = "Development build with version injection"
+run = 'go build -tags dev -ldflags "-X github.com/antoniopantaleo/wwdc/cmd.version=$(cat VERSION)-dev" -o wwdc .'
+
+[tasks.test]
+description = "Run all tests"
+run = "go test ./..."
+
+[tasks.changelog]
+description = "Generate changelog"
+run = "git-cliff -o CHANGELOG.md"
+
+[tasks."version:current"]
+description = "Show current version"
+run = "cat VERSION"
+
+[tasks.version]
+description = "Bump version based on conventional commits, generate changelog, commit and tag"
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+
+CURRENT=$(cat VERSION)
+NEW=$(git-cliff --bumped-version | sed 's/^v//')
+
+if [ "$NEW" = "$CURRENT" ]; then
+  echo "No version bump needed (still $CURRENT)"
+  exit 0
+fi
+
+echo -n "$NEW" > VERSION
+git-cliff --bump -o CHANGELOG.md
+git add VERSION CHANGELOG.md
+git commit -m "chore: bump version to $NEW"
+git tag "v$NEW"
+echo "Released: $CURRENT -> $NEW (tagged v$NEW)"
+"""
