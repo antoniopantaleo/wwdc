@@ -1,8 +1,7 @@
 package scraper
 
 import (
-	"io"
-	"log"
+	"fmt"
 	"net/http"
 	"regexp"
 	"strconv"
@@ -13,20 +12,18 @@ import (
 )
 
 type CollyScraper struct {
-	baseURL string
-	logger  *log.Logger
+	baseURL  string
+	reporter domain.ProgressReporter
 }
 
-func NewCollyScraper(baseURL string, logger *log.Logger) *CollyScraper {
-	if logger == nil {
-		logger = log.New(io.Discard, "", 0)
-	}
-	return &CollyScraper{baseURL: baseURL, logger: logger}
+func NewCollyScraper(baseURL string, reporter domain.ProgressReporter) *CollyScraper {
+	return &CollyScraper{baseURL: baseURL, reporter: reporter}
 }
 
 func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 	mu := sync.Mutex{}
 	eventsMap := make(map[string]*domain.WWDCEvent)
+	var scrapeErr error
 	eventsScraper := colly.NewCollector()
 
 	transport := &http.Transport{
@@ -47,20 +44,39 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 	)
 	videosScraper.WithTransport(transport)
 	videosScraper.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 20})
-	s.logger.Println("Visiting", s.baseURL)
 
 	re := regexp.MustCompile(`wwdc(\d{4})`)
+
+	eventsScraper.OnError(func(r *colly.Response, err error) {
+		scrapeErr = fmt.Errorf("failed to fetch events list: %w", err)
+	})
+
+	videosScraper.OnError(func(r *colly.Response, err error) {
+		year := r.Ctx.Get("eventYear")
+		s.reporter.Warning(fmt.Sprintf("Failed to fetch event page for %s: %s", year, err))
+	})
+
+	singleVideoScraper.OnError(func(r *colly.Response, err error) {
+		s.reporter.Warning(fmt.Sprintf("Failed to fetch video page %s: %s", r.Request.URL, err))
+	})
+
+	s.reporter.Info("Scraping events from Apple Developer website...")
+
 	eventsScraper.OnHTML("a[href^=\"/videos/wwdc\"].vc-card", func(h *colly.HTMLElement) {
 		eventURL := h.Request.AbsoluteURL(h.Attr("href"))
 		coverURL := h.Request.AbsoluteURL(h.ChildAttr("img.vc-card__image", "src"))
 		title := h.ChildText("span.vc-card__tag--event")
 		matches := re.FindStringSubmatch(eventURL)
-		year := "unknown"
-		if len(matches) > 1 {
-			year = matches[1]
+		if len(matches) < 2 {
+			s.reporter.Warning(fmt.Sprintf("Could not extract year from URL: %s", eventURL))
+			return
 		}
-		intYear, _ := strconv.Atoi(year)
-		s.logger.Printf("Found event: %s %s (%s) - %s\n", year, title, coverURL, eventURL)
+		year := matches[1]
+		intYear, err := strconv.Atoi(year)
+		if err != nil {
+			s.reporter.Warning(fmt.Sprintf("Invalid year %s in URL: %s", year, eventURL))
+			return
+		}
 		event := &domain.WWDCEvent{
 			Title:    title,
 			Year:     intYear,
@@ -70,6 +86,7 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 		mu.Lock()
 		if _, exists := eventsMap[year]; !exists {
 			eventsMap[year] = event
+			s.reporter.Info(fmt.Sprintf("Found event: %s (%s)", title, year))
 		}
 		mu.Unlock()
 		ctx := colly.NewContext()
@@ -80,14 +97,12 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 	videosScraper.OnHTML("a[href^=\"/videos/play/wwdc\"].vc-card", func(h *colly.HTMLElement) {
 		videoURL := h.Request.AbsoluteURL(h.Attr("href"))
 		ctx := h.Request.Ctx
-		s.logger.Printf("Found video page: %s\n", videoURL)
 		singleVideoScraper.Request("GET", videoURL, nil, ctx, nil)
 	})
 
 	singleVideoScraper.OnHTML("li.download li:first-child", func(h *colly.HTMLElement) {
 		videoURL := h.ChildAttr("li a", "href")
 		h.Request.Ctx.Put("videoURL", videoURL)
-		s.logger.Printf("Found video URL: %s\n", videoURL)
 	})
 
 	singleVideoScraper.OnHTML("li.supplement.details", func(h *colly.HTMLElement) {
@@ -96,7 +111,6 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 		ctx := h.Request.Ctx
 		ctx.Put("videoTitle", title)
 		ctx.Put("videoContent", content)
-		s.logger.Printf("Found video details: %s - %s\n", title, content)
 	})
 
 	singleVideoScraper.OnScraped(func(r *colly.Response) {
@@ -114,10 +128,12 @@ func (s *CollyScraper) Scrape() ([]domain.WWDCEvent, error) {
 			event.Videos = append(event.Videos, *video)
 		}
 		mu.Unlock()
-		s.logger.Printf("%s, Finished scraping video page: %s\n", year, r.Request.URL)
 	})
 
 	eventsScraper.Visit(s.baseURL + "/videos")
+	if scrapeErr != nil {
+		return nil, scrapeErr
+	}
 	videosScraper.Wait()
 	singleVideoScraper.Wait()
 	var events []domain.WWDCEvent
