@@ -1,0 +1,79 @@
+version: 2
+
+project_name: wwdc
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - main: .
+    env:
+      - CGO_ENABLED=0
+    ldflags:
+      - -s -w -X github.com/antoniopantaleo/wwdc/cmd.version={{ .Version }}
+    goos:
+      - linux
+      - darwin
+    goarch:
+      - arm64
+      - amd64
+
+archives:
+  - formats: [tar.gz]
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else }}{{ .Arch }}{{ end }}
+
+dockers:
+  - image_templates:
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-amd64"
+    use: buildx
+    build_flag_templates:
+      - "--platform=linux/amd64"
+    goarch: amd64
+    dockerfile: Dockerfile.goreleaser
+  - image_templates:
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-arm64"
+    use: buildx
+    build_flag_templates:
+      - "--platform=linux/arm64"
+    goarch: arm64
+    dockerfile: Dockerfile.goreleaser
+
+docker_manifests:
+  - name_template: "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}"
+    image_templates:
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-amd64"
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-arm64"
+  - name_template: "ghcr.io/antoniopantaleo/wwdc:latest"
+    image_templates:
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-amd64"
+      - "ghcr.io/antoniopantaleo/wwdc:{{ .Version }}-arm64"
+
+changelog:
+  use: git-cliff
+  sort: asc
+
+brews:
+  - repository:
+      owner: antoniopantaleo
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
+    directory: Formula
+    homepage: "https://github.com/antoniopantaleo/wwdc"
+    description: "A CLI tool to scrape and export WWDC session videos"
+    license: "MIT"
+    install: |
+      bin.install "wwdc"
+    test: |
+      system "#{bin}/wwdc", "--version"
+
+release:
+  footer: >-
+
+    ---
+
+    Released by [GoReleaser](https://github.com/goreleaser/goreleaser).
